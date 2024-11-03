@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0% 16%;
+  margin-bottom: 20px;
   gap: 15px;
 `;
 
@@ -25,17 +26,18 @@ export const LeftContainer = styled.div`
 `;
 
 export const LeftBox = styled.div`
-  height: 430px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   width: 100%;
   border: 1px solid #e4e4e4;
   border-radius: 10px;
   box-shadow: 0px 2px 4px 0px #e4e4e4;
+  padding: 30px 40px;
 `;
 
 export const RightBox = styled.div`
-  height: 575px;
+  height: 695px;
   width: 29%;
   display: flex;
   flex-direction: column;
@@ -68,4 +70,35 @@ export const TitleText = styled.div`
   font-weight: var(--medium);
   color: white;
   margin-bottom: 10px;
+`;
+
+export const SubTitleText = styled.div`
+  font-size: 20px;
+  font-weight: var(--semi-light);
+  color: black;
+`;
+
+export const LeftBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+`;
+
+export const CategoryTitle = styled.div`
+  font-size: 17px;
+  font-weight: var(--semi-light);
+  color: var(--green);
+  margin-bottom: 4px;
+`;
+
+export const SpecialtyContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4개의 열로 정렬 */
+`;
+
+export const TextButton = styled.div`
+  margin: 5px;
+  font-size: 15px;
+  color: black;
+  cursor: pointer;
 `;

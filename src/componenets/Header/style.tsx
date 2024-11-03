@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Logo from '../../assets/MILI PREVIEW.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -16,4 +15,5 @@ export const ButtonContainer = styled.div`
 
 export const TextButton = styled.div`
   font-size: var(--sm);
+  cursor: pointer;
 `;

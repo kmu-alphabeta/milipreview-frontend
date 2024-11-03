@@ -1,4 +1,5 @@
 import * as m from './style';
+import { categories } from '../../data/category';
 import Header from '../../componenets/Header/index';
 
 const MainPage: React.FC = () => {
@@ -15,7 +16,21 @@ const MainPage: React.FC = () => {
               </m.TitleText>
             </m.OverlayText>
           </m.Image>
-          <m.LeftBox />
+          <m.LeftBox>
+            <m.LeftBoxContainer>
+              <m.SubTitleText>합격률 예측하기</m.SubTitleText>
+              {categories.map((category) => (
+                <div key={category.type}>
+                  <m.CategoryTitle>{category.type}</m.CategoryTitle>
+                  <m.SpecialtyContainer>
+                    {category.specialties.map((specialty) => (
+                      <m.TextButton key={specialty}>{specialty}</m.TextButton>
+                    ))}
+                  </m.SpecialtyContainer>
+                </div>
+              ))}
+            </m.LeftBoxContainer>
+          </m.LeftBox>
         </m.LeftContainer>
         <m.RightBox />
       </m.InnerContainer>

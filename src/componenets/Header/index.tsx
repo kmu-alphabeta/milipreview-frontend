@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
 const MainPage: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useLocation();
+  //Logo Click Event
   const onClick = () => {
     if (navigate.pathname === '/') {
       window.location.reload(); //홈 새로고침
     } else {
       window.location.href = '/'; // 홈으로 이동
+    }
+  };
+  //Logout Button Click Event
+  const onLogoutClick = () => {
+    if (isLoggedIn) {
+      setIsLoggedIn(false);
+      // 로그아웃 후 추가적인 처리 (예: 세션 초기화, 페이지 이동 등)
+    } else {
+      setIsLoggedIn(true);
     }
   };
   return (
@@ -20,7 +32,9 @@ const MainPage: React.FC = () => {
       />
       <h.ButtonContainer>
         <h.TextButton>예측 조회 및 관리</h.TextButton>
-        <h.TextButton>Logout</h.TextButton>
+        <h.TextButton onClick={onLogoutClick}>
+          {isLoggedIn ? 'Logout' : 'Login'}
+        </h.TextButton>
       </h.ButtonContainer>
     </h.Container>
   );

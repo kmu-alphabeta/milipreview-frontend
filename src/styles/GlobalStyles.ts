@@ -27,8 +27,7 @@ const GlobalStyle = createGlobalStyle`
     :root {
         //colors
         --green: #437550;
-        --gray--0: #D9D9D9;
-        --gray--1: #D9D9D9;
+        --gray: #D9D9D9;
         --red: #C00F0C;
         --white: #FFFFFF;
         --black: #000000;
@@ -40,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
         --bold: 800;
         //font size
         --sm: 15px;
+        --semi-sm: 20px;
         --regular: 25px;
         --large: 30px;
     }

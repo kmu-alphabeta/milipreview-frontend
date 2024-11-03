@@ -42,7 +42,6 @@ export const RightBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: center;
   padding: 20px 7px;
   border: 1px solid #e4e4e4;
   border-radius: 10px;

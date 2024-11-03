@@ -1,6 +1,7 @@
 import * as m from './style';
 import { categories } from '../../data/category';
 import Header from '../../componenets/Header/index';
+import Profile from '../../componenets/Profile/index';
 
 const MainPage: React.FC = () => {
   return (
@@ -32,7 +33,15 @@ const MainPage: React.FC = () => {
             </m.LeftBoxContainer>
           </m.LeftBox>
         </m.LeftContainer>
-        <m.RightBox />
+        <m.RightBox>
+          <Profile
+            userData={{
+              name: '박건민',
+              profileImage: '',
+            }}
+          />
+          <span style={{ marginLeft: '6%' }}>최근 예측 기록</span>
+        </m.RightBox>
       </m.InnerContainer>
     </m.Container>
   );

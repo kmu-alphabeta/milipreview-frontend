@@ -2,7 +2,7 @@ import React from 'react';
 import * as m from './style';
 import Header from '../../componenets/Header/index';
 
-const HEADER_HEIGHT = 80; // 헤더 높이 설정
+const HEADER_HEIGHT = 80;
 
 const OnboardingPage: React.FC = () => {
   return (

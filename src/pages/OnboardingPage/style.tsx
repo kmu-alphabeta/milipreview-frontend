@@ -4,9 +4,8 @@ interface AnimatedBoxProps {
   delay: number;
 }
 
-const HEADER_HEIGHT = 80; // 헤더 높이 설정
+const HEADER_HEIGHT = 80;
 
-// 애니메이션 정의
 const scrollDown = keyframes`
     0% {
         top: 300px;
@@ -21,7 +20,7 @@ export const Container = styled.div`
     margin: 0% 16%;
     margin-bottom: 20px;
     overflow: hidden;
-    z-index: 2; /* 컨테이너를 사각형보다 위로 */
+    z-index: 2;
 `;
 
 export const ContentWrapper = styled.div`
@@ -42,12 +41,12 @@ export const LeftContent = styled.div`
 
 export const RightContent = styled.div`
     position: absolute;
-    top: ${HEADER_HEIGHT}px; /* 헤더 아래에서 시작 */
+    top: ${HEADER_HEIGHT}px;
     right: 0;
     width: 50%;
     height: calc(100vh - ${HEADER_HEIGHT}px);
     overflow: hidden;
-    z-index: 1; /* 사각형을 컨텐츠 뒤로 보냅니다 */
+    z-index: 1;
 `;
 
 export const Column = styled.div`
@@ -71,11 +70,11 @@ export const Text = styled.p`
 export const AnimatedBox = styled.div<AnimatedBoxProps>`
     position: absolute;
     width: 100%;
-    padding-top: 100%; /* 정사각형 유지 */
+    padding-top: 100%;
     background-color: #e4e4e4;
     border-radius: 10px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     animation: ${scrollDown} 10s linear infinite;
     animation-delay: ${(props) => props.delay}s;
-    z-index: 0; /* 사각형을 가장 뒤로 배치 */
+    z-index: 0;
 `;

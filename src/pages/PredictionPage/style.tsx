@@ -1,5 +1,3 @@
-// src/pages/PredictionPage/style.tsx
-
 import styled from 'styled-components';
 
 export const Container = styled.div`

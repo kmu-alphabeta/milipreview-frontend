@@ -1,5 +1,3 @@
-// src/pages/NewMemberPage/NewMemberPage.tsx
-
 import React from 'react';
 import * as m from './style';
 import Header from '../../componenets/Header';

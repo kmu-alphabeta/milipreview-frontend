@@ -7,10 +7,12 @@ import NewMemberForm from '../../componenets/NewMemberForm/NewMemberForm';
 
 const NewMemberPage: React.FC = () => {
   return (
-    <m.Container>
-      <Header />
-      <NewMemberForm />
-    </m.Container>
+    <m.Background>
+      <m.Container>
+        <Header />
+        <NewMemberForm />
+      </m.Container>
+    </m.Background>
   );
 };
 

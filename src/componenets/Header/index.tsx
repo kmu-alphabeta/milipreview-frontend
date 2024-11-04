@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
-const MainPage: React.FC = () => {
+const Header: React.FC = () => {
   const navigate = useLocation();
   const onClick = () => {
     if (navigate.pathname === '/') {
@@ -26,4 +26,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default Header;

@@ -4,39 +4,51 @@ import React from 'react';
 import * as m from './style';
 
 const NewMemberForm: React.FC = () => {
+  // 연도, 월, 일 옵션 생성
+  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
   return (
     <m.Container>
-      <m.Title>신규 회원 가입</m.Title>
+      <m.Title>생년월일을 입력해주세요</m.Title>
       <m.ProgressBar>
         <m.Progress width={50} /> {/* 진행도를 퍼센트로 조절하세요 */}
       </m.ProgressBar>
       <m.InputSection>
-        {/* 텍스트 입력 */}
-        <m.InputLabel>이름</m.InputLabel>
-        <m.TextInput type="text" placeholder="이름을 입력하세요" />
-
-        {/* 체크박스 그룹 */}
-        <m.InputLabel>관심 분야</m.InputLabel>
-        <m.CheckboxGroup>
-          <label>
-            <input type="checkbox" /> 기술
-          </label>
-          <label>
-            <input type="checkbox" /> 디자인
-          </label>
-          <label>
-            <input type="checkbox" /> 마케팅
-          </label>
-        </m.CheckboxGroup>
-
-        {/* 드롭다운 메뉴 */}
-        <m.InputLabel>직업</m.InputLabel>
-        <m.Dropdown>
-          <option value="">선택하세요</option>
-          <option value="developer">개발자</option>
-          <option value="designer">디자이너</option>
-          <option value="marketer">마케터</option>
-        </m.Dropdown>
+        {/* 생년월일 입력 */}
+        <m.DateOfBirthContainer>
+          {/* 연도 드롭다운 */}
+          <m.Dropdown>
+            <option value=""></option>
+            {years.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </m.Dropdown>
+          <m.DropdownLabel>년</m.DropdownLabel>
+          {/* 월 드롭다운 */}
+          <m.Dropdown>
+            <option value=""></option>
+            {months.map((month) => (
+              <option key={month} value={month}>
+                {month}
+              </option>
+            ))}
+          </m.Dropdown>
+          <m.DropdownLabel>월</m.DropdownLabel>
+          {/* 일 드롭다운 */}
+          <m.Dropdown>
+            <option value=""></option>
+            {days.map((day) => (
+              <option key={day} value={day}>
+                {day}
+              </option>
+            ))}
+          </m.Dropdown>
+          <m.DropdownLabel>일</m.DropdownLabel>
+        </m.DateOfBirthContainer>
       </m.InputSection>
       <m.ButtonContainer>
         <m.Button>이전</m.Button>

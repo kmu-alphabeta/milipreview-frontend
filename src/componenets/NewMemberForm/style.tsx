@@ -14,6 +14,7 @@ export const Container = styled.div`
     overflow: hidden; /* 페이지 스크롤 방지 */
     align-items: center; /* 수평 가운데 정렬 */
     text-align: center; /* 텍스트 가운데 정렬 */
+    margin-top: 120px;
 `;
 
 export const Title = styled.h2`
@@ -75,6 +76,7 @@ export const ButtonContainer = styled.div`
     width: 100%;
     margin-top: 10px; /* 드롭다운과 버튼 사이 간격 줄이기 */
     margin-right: 300px;
+    margin-top: 150px;
 `;
 
 export const Button = styled.button`

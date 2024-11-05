@@ -21,7 +21,7 @@ const Profile: React.FC<ProfileProps> = ({ userData }) => {
           )}
 
           <p.InnerContainer>
-            <p.UserName>{userData.name}</p.UserName>
+            <p.UserName>{userData.name}님</p.UserName>
             {userData.email && <p.Email>{userData.email}</p.Email>}
           </p.InnerContainer>
         </>

@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
 const MainPage: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const navigate = useLocation();
   //Logo Click Event
+  const navigate = useLocation();
   const onClick = () => {
     if (navigate.pathname === '/') {
       window.location.reload(); //홈 새로고침
@@ -35,6 +34,7 @@ const MainPage: React.FC = () => {
         <h.TextButton onClick={onLogoutClick}>
           {isLoggedIn ? 'Logout' : 'Login'}
         </h.TextButton>
+        <h.TextButton>Logout</h.TextButton>
       </h.ButtonContainer>
     </h.Container>
   );

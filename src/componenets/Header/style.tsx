@@ -15,5 +15,6 @@ export const ButtonContainer = styled.div`
 
 export const TextButton = styled.div`
   font-size: var(--sm);
+  font-weight: var(--medium);
   cursor: pointer;
 `;

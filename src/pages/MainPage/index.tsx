@@ -2,6 +2,7 @@ import * as m from './style';
 import { categories } from '../../data/category';
 import Header from '../../componenets/Header/index';
 import Profile from '../../componenets/Profile/index';
+import Prediction from '../../componenets/Prediction';
 
 const MainPage: React.FC = () => {
   return (
@@ -41,6 +42,7 @@ const MainPage: React.FC = () => {
             }}
           />
           <span style={{ marginLeft: '6%' }}>최근 예측 기록</span>
+          <Prediction />
         </m.RightBox>
       </m.InnerContainer>
     </m.Container>

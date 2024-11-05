@@ -58,10 +58,11 @@ export const Image = styled.div`
 `;
 
 export const OverlayText = styled.div`
+  width: 100%;
   height: 125px;
   background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경 반투명 설정 */
   padding: 30px 140px;
-  border-radius: 8px;
+  border-radius: 10px;
 `;
 
 export const TitleText = styled.div`

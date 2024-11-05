@@ -15,6 +15,7 @@ export const InnerContainer = styled.div`
   align-items: center;
   gap: 2%;
   width: 100%;
+  align-items: stretch;
 `;
 
 export const LeftContainer = styled.div`
@@ -26,7 +27,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const LeftBox = styled.div`
-  height: 550px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -37,7 +38,7 @@ export const LeftBox = styled.div`
 `;
 
 export const RightBox = styled.div`
-  height: 695px;
+  flex-grow: 1;
   width: 29%;
   display: flex;
   flex-direction: column;

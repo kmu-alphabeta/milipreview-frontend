@@ -1,8 +1,8 @@
 import * as m from './style';
 import { categories } from '../../data/category';
-import Header from '../../componenets/Header/index';
-import Profile from '../../componenets/Profile/index';
-import Prediction from '../../componenets/Prediction';
+import Header from '../../components/Header/index';
+import Profile from '../../components/Profile/index';
+import Prediction from '../../components/Prediction';
 
 const MainPage: React.FC = () => {
   return (

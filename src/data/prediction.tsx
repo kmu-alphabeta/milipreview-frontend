@@ -17,7 +17,7 @@ export const dummyData: PredictionItem[] = [
   {
     id: 2,
     militaryType: '육군',
-    specialty: '임기제부사관',
+    specialty: '방사능분석연구보조병',
     probability: 100,
     date: '2024-10-10 20:54',
   },

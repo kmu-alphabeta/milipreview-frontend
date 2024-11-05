@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 auto;
     }
 
-
     :root {
         //colors
         --green: #437550;

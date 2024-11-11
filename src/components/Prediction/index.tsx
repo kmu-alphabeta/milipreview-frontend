@@ -18,7 +18,11 @@ const Prediction: React.FC = () => {
             >
               {item.probability}%
             </p.Probability>
-            <p.ClickButton>보러가기</p.ClickButton>
+            <p.ClickButton>
+              보러
+              <br />
+              가기
+            </p.ClickButton>
           </p.RightBox>
         </p.InnerContainer>
       ))}

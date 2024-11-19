@@ -8,9 +8,9 @@ const Qualifications: React.FC = () => {
 
   return (
     <m.Container>
-      <m.Title>생년월일을 입력해주세요</m.Title>
+      <m.Title>보유한 자격증 정보를 입력해주세요</m.Title>
       <m.ProgressBar>
-        <m.Progress width={50} />
+        <m.Progress width={55} />
       </m.ProgressBar>
       <m.InputSection>
         <m.DateOfBirthContainer>

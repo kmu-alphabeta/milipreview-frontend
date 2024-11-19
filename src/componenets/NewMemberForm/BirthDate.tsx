@@ -10,7 +10,7 @@ const BirthDate: React.FC = () => {
     <m.Container>
       <m.Title>생년월일을 입력해주세요</m.Title>
       <m.ProgressBar>
-        <m.Progress width={50} />
+        <m.Progress width={5} />
       </m.ProgressBar>
       <m.InputSection>
         <m.DateOfBirthContainer>

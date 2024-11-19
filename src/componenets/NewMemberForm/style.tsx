@@ -24,7 +24,7 @@ export const Title = styled.h2`
 `;
 
 export const ProgressBar = styled.div`
-    width: 40%;
+    width: 80%;
     background-color: #346942;
     border-radius: 10px;
     overflow: hidden;

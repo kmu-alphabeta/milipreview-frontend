@@ -8,9 +8,9 @@ const AdditionalPoints: React.FC = () => {
 
   return (
     <m.Container>
-      <m.Title>생년월일을 입력해주세요</m.Title>
+      <m.Title>가산 항목을 입력해주세요</m.Title>
       <m.ProgressBar>
-        <m.Progress width={50} />
+        <m.Progress width={80} />
       </m.ProgressBar>
       <m.InputSection>
         <m.DateOfBirthContainer>

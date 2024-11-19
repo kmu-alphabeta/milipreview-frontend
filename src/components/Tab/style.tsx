@@ -1,25 +1,23 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 20px;
+  /* padding: 20px; */
 `;
 
 export const TabLayout = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 20px;
 `;
 
-export const TabButton = styled.button<{ active: boolean }>`
-  padding: 10px 20px;
+export const TabButton = styled.div<{ active: boolean }>`
   border: none;
-  background-color: ${({ active }) => (active ? '#437550' : '#d9d9d9')};
-  color: ${({ active }) => (active ? '#fff' : '#000')};
+  color: ${({ active }) => (active ? '#000' : '#757575')};
   cursor: pointer;
   border-radius: 5px;
 
   &:hover {
-    background-color: #437550;
-    color: #fff;
+    color: #000;
+    transform: translateY(-5px); /* 위로 이동 */
   }
 `;
 

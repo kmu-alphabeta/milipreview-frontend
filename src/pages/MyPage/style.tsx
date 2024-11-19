@@ -22,6 +22,10 @@ export const InnerContainer = styled.div`
   box-shadow: 0px 2px 4px 0px #e4e4e4;
 `;
 
+export const PredictionContainer = styled.div`
+  width: 400px;
+`;
+
 export const HistoryContainer = styled.div`
   display: flex;
   gap: 17px;

@@ -8,7 +8,7 @@ const NewMemberPage: React.FC = () => {
     <m.Background>
       <m.Container>
         <Header />
-        <NewMemberForm />
+        <NewMemberForm/>
       </m.Container>
     </m.Background>
   );

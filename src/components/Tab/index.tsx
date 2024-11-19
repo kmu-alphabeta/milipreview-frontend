@@ -11,7 +11,7 @@ const TabComponent: React.FC<TabProps> = ({ tabs, onTabChange }) => {
 
   const handleTabClick = (tab: string, index: number) => {
     setActiveTab(index);
-    onTabChange(tab); // 부모 컴포넌트에 선택된 탭을 전달
+    onTabChange(tab);
   };
 
   return (

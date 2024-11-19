@@ -35,12 +35,14 @@ const MainPage: React.FC = () => {
           </m.LeftBox>
         </m.LeftContainer>
         <m.RightBox>
-          <Profile
-            userData={{
-              name: '박건민',
-              profileImage: '',
-            }}
-          />
+          <div style={{ marginLeft: '6%' }}>
+            <Profile
+              userData={{
+                name: '박건민',
+                profileImage: '',
+              }}
+            />
+          </div>
           <span style={{ marginLeft: '6%' }}>최근 예측 기록</span>
           <Prediction />
         </m.RightBox>

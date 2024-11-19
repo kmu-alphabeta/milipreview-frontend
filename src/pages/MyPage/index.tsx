@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ProfilePage from '../ProfilePage/index';
 import Header from '../../components/Header/index';
 import Profile from '../../components/Profile/index';
 import Prediction from '../../components/Prediction';
@@ -7,16 +8,11 @@ import * as m from './style';
 
 const HistoryPage = () => (
   <m.HistoryContainer>
-    <Prediction />
+    <m.PredictionContainer>
+      <Prediction />
+    </m.PredictionContainer>
     <m.Graph />
   </m.HistoryContainer>
-);
-
-const ProfilePage = () => (
-  <div>
-    <h2>공통 서식 수정</h2>
-    {/* 공통 서식 수정 관련 UI */}
-  </div>
 );
 
 const MyPage: React.FC = () => {
@@ -29,13 +25,15 @@ const MyPage: React.FC = () => {
     <m.Container>
       <Header />
       <m.InnerContainer>
-        <Profile
-          userData={{
-            name: '박건민',
-            profileImage: '',
-            email: 'phk_@kookmin.ac.kr',
-          }}
-        />
+        <div style={{ marginBottom: '10px' }}>
+          <Profile
+            userData={{
+              name: '박건민',
+              profileImage: '',
+              email: 'phk_@kookmin.ac.kr',
+            }}
+          />
+        </div>
         <Tab
           tabs={['히스토리 조회', '공통 서식 수정']}
           onTabChange={handleTabChange}

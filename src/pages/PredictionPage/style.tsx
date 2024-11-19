@@ -1,42 +1,19 @@
 import styled from 'styled-components';
 
+export const Background = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #ffffff 60%, #C7D6CB); /* 전체 배경 그라데이션 */
+`;
+
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0% 16%;
-  margin-bottom: 20px;
-  gap: 15px;
-`;
-
-export const InnerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2%;
-  width: 100%;
-`;
-
-export const PredictionBox = styled.div`
-  height: 650px;
-  width: 100%;
-  border: 1px solid #e4e4e4;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px 0px #e4e4e4;
-  padding: 30px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-`;
-
-export const Title = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-`;
-
-export const Text = styled.p`
-  font-size: 16px;
-  color: #666;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0% 16%;
+    gap: 15px;
+    height: 100vh;
+    overflow: hidden;
 `;

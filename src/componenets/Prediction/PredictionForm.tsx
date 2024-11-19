@@ -13,7 +13,7 @@ const PageContainer = styled.div`
     padding: 20px;
 `;
 
-const NewMemberForm = () => {
+const PredictionForm = () => {
   const [step, setStep] = useState(1);
 
   const renderComponent = () => {
@@ -59,4 +59,4 @@ const NewMemberForm = () => {
   );
 };
 
-export default NewMemberForm;
+export default PredictionForm;

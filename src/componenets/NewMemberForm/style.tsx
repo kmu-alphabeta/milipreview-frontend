@@ -1,4 +1,4 @@
-// src/components/NewMemberForm/style.tsx
+// src/components/BirthDate/style.tsx
 
 import styled from 'styled-components';
 

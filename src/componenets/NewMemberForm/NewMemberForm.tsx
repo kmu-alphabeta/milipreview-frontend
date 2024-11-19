@@ -1,60 +1,61 @@
-// src/components/NewMemberForm/NewMemberForm.tsx
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import BirthDate from './BirthDate';
+import Education from './Education';
+import Qualifications from './Qualifications';
+import AdditionalPoints from './AdditionalPoints';
+import * as m from './style'; // 스타일을 동일하게 가져오기
 
-import React from 'react';
-import * as m from './style';
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+`;
 
-const NewMemberForm: React.FC = () => {
-  // 연도, 월, 일 옵션 생성
-  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+const NewMemberForm = () => {
+  const [step, setStep] = useState(1);
+
+  const renderComponent = () => {
+    switch (step) {
+      case 1:
+        return <BirthDate />;
+      case 2:
+        return <Education />;
+      case 3:
+        return <Qualifications />;
+      case 4:
+        return <AdditionalPoints />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <m.Container>
-      <m.Title>생년월일을 입력해주세요</m.Title>
-      <m.ProgressBar>
-        <m.Progress width={50} /> {/* 진행도를 퍼센트로 조절하세요 */}
-      </m.ProgressBar>
-      <m.InputSection>
-        {/* 생년월일 입력 */}
-        <m.DateOfBirthContainer>
-          {/* 연도 드롭다운 */}
-          <m.Dropdown>
-            <option value=""></option>
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </m.Dropdown>
-          <m.DropdownLabel>년</m.DropdownLabel>
-          {/* 월 드롭다운 */}
-          <m.Dropdown>
-            <option value=""></option>
-            {months.map((month) => (
-              <option key={month} value={month}>
-                {month}
-              </option>
-            ))}
-          </m.Dropdown>
-          <m.DropdownLabel>월</m.DropdownLabel>
-          {/* 일 드롭다운 */}
-          <m.Dropdown>
-            <option value=""></option>
-            {days.map((day) => (
-              <option key={day} value={day}>
-                {day}
-              </option>
-            ))}
-          </m.Dropdown>
-          <m.DropdownLabel>일</m.DropdownLabel>
-        </m.DateOfBirthContainer>
-      </m.InputSection>
+    <PageContainer>
+      {renderComponent()}
       <m.ButtonContainer>
-        <m.Button>이전</m.Button>
-        <m.Button>다음</m.Button>
+        {/* 이전 버튼 */}
+        <m.Button
+          onClick={() => setStep(step - 1)}
+          disabled={step === 1}
+          style={{
+            backgroundColor: step === 1 ? '#cccccc' : '#437550',
+            cursor: step === 1 ? 'not-allowed' : 'pointer',
+          }}
+        >
+          이전
+        </m.Button>
+
+        {/* 다음 버튼 */}
+        <m.Button
+          onClick={() => setStep(step + 1)}
+          disabled={step === 4}
+        >
+          {step === 4 ? '시작' : '다음'}
+        </m.Button>
       </m.ButtonContainer>
-    </m.Container>
+    </PageContainer>
   );
 };
 

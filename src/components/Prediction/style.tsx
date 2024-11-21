@@ -44,6 +44,7 @@ export const ClickButton = styled.div`
 
 export const Probability = styled.div`
   font-size: 15px;
+  width: 40px;
 `;
 
 export const SpecialtyText = styled.div`

@@ -13,6 +13,9 @@ const MainPage: React.FC = () => {
       window.location.href = '/'; // 홈으로 이동
     }
   };
+  const onHistoryClick = () => {
+    window.location.href = '/mypage'; // 마이페이지로 이동
+  };
   //Logout Button Click Event
   const onLogoutClick = () => {
     if (isLoggedIn) {
@@ -31,11 +34,11 @@ const MainPage: React.FC = () => {
         style={{ width: '95px', height: '30px', cursor: 'pointer' }}
       />
       <h.ButtonContainer>
-        <h.TextButton>예측 조회 및 관리</h.TextButton>
+        <h.TextButton onClick={onHistoryClick}>예측 조회 및 관리</h.TextButton>
         <h.TextButton onClick={onLogoutClick}>
-          {isLoggedIn ? 'Logout' : 'Login'}
+          {isLoggedIn ? '로그아웃' : '로그인 '}
         </h.TextButton>
-        <h.TextButton>Logout</h.TextButton>
+        <h.TextButton>탈퇴하기</h.TextButton>
       </h.ButtonContainer>
     </h.Container>
   );

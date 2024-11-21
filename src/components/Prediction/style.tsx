@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
+  /* width: 450px; */
 `;
 
 export const InnerContainer = styled.div`
@@ -15,6 +16,7 @@ export const InnerContainer = styled.div`
   width: 100%;
   height: 50px;
   padding: 10px 13px;
+  cursor: pointer;
 `;
 
 export const LeftBox = styled.div`

@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import * as p from './style';
 import UserImg from '../../assets/user.svg';
 
@@ -10,6 +11,10 @@ interface ProfileProps {
 }
 
 const Profile: React.FC<ProfileProps> = ({ userData }) => {
+  const navigate = useNavigate();
+  const goToMyPage = () => {
+    navigate('/mypage');
+  };
   return (
     <p.Container>
       {userData.name ? (
@@ -20,7 +25,7 @@ const Profile: React.FC<ProfileProps> = ({ userData }) => {
             <p.ProfileImage src={UserImg} />
           )}
 
-          <p.InnerContainer>
+          <p.InnerContainer onClick={goToMyPage}>
             <p.UserName>{userData.name}님</p.UserName>
             {userData.email && <p.Email>{userData.email}</p.Email>}
           </p.InnerContainer>

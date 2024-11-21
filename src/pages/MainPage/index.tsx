@@ -3,8 +3,13 @@ import { categories } from '../../data/category';
 import Header from '../../components/Header/index';
 import Profile from '../../components/Profile/index';
 import Prediction from '../../components/Prediction';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
+  const navigate = useNavigate();
+  const onClickText = () => {
+    navigate('/');
+  };
   return (
     <m.Container>
       <Header />
@@ -26,7 +31,9 @@ const MainPage: React.FC = () => {
                   <m.CategoryTitle>{category.type}</m.CategoryTitle>
                   <m.SpecialtyContainer>
                     {category.specialties.map((specialty) => (
-                      <m.TextButton key={specialty}>{specialty}</m.TextButton>
+                      <m.TextButton onClick={onClickText} key={specialty}>
+                        {specialty}
+                      </m.TextButton>
                     ))}
                   </m.SpecialtyContainer>
                 </div>

@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2%;
+  gap: 4px;
   cursor: pointer;
 `;
 

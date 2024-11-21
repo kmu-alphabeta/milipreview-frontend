@@ -7,8 +7,11 @@ import { useNavigate } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
-  const onClickText = () => {
-    navigate('/');
+  const onClickText = (category: { type: string; specialty: string }) => {
+    console.log('Navigating with category:', category);
+    navigate('/', {
+      state: { category: category.type, specialty: category.specialty },
+    });
   };
   return (
     <m.Container>
@@ -31,7 +34,12 @@ const MainPage: React.FC = () => {
                   <m.CategoryTitle>{category.type}</m.CategoryTitle>
                   <m.SpecialtyContainer>
                     {category.specialties.map((specialty) => (
-                      <m.TextButton onClick={onClickText} key={specialty}>
+                      <m.TextButton
+                        onClick={() =>
+                          onClickText({ type: category.type, specialty })
+                        }
+                        key={specialty}
+                      >
                         {specialty}
                       </m.TextButton>
                     ))}

@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
+import KakaoLogo from '../../assets/kakao_login_medium_narrow.png';
 const MainPage: React.FC = () => {
+  const [isFirst, setIsFirst] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //Logo Click Event
   const navigate = useLocation();
@@ -15,6 +17,9 @@ const MainPage: React.FC = () => {
   };
   const onHistoryClick = () => {
     window.location.href = '/mypage'; // 마이페이지로 이동
+  };
+  const onKakaoClick = () => {
+    window.location.href = '/kakao'; // 카카오 로그인 페이지로 이동
   };
   //Logout Button Click Event
   const onLogoutClick = () => {
@@ -33,13 +38,24 @@ const MainPage: React.FC = () => {
         alt="Mili Preview Logo"
         style={{ width: '95px', height: '30px', cursor: 'pointer' }}
       />
-      <h.ButtonContainer>
-        <h.TextButton onClick={onHistoryClick}>예측 조회 및 관리</h.TextButton>
-        <h.TextButton onClick={onLogoutClick}>
-          {isLoggedIn ? '로그아웃' : '로그인 '}
-        </h.TextButton>
-        <h.TextButton>탈퇴하기</h.TextButton>
-      </h.ButtonContainer>
+      {isFirst ? (
+        <img
+          src={KakaoLogo}
+          alt="Kakao Login"
+          onClick={onKakaoClick}
+          style={{ cursor: 'pointer' }}
+        />
+      ) : (
+        <h.ButtonContainer>
+          <h.TextButton onClick={onHistoryClick}>
+            예측 조회 및 관리
+          </h.TextButton>
+          <h.TextButton onClick={onLogoutClick}>
+            {isLoggedIn ? '로그아웃' : '로그인 '}
+          </h.TextButton>
+          <h.TextButton>탈퇴하기</h.TextButton>
+        </h.ButtonContainer>
+      )}
     </h.Container>
   );
 };

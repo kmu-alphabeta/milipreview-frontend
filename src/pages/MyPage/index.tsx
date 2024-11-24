@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Header from '../../components/Header/index';
 import Profile from '../../components/Profile/index';
-import Prediction from '../../components/Prediction';
+import PredictionForm from '../../components/Prediction/PredictionForm';
 import * as m from './style';
 
 const MyPage: React.FC = () => {
@@ -21,7 +21,7 @@ const MyPage: React.FC = () => {
         히스토리 조회
         <m.HistoryContainer>
           <m.PredictionContainer>
-            <Prediction />
+            <PredictionForm />
           </m.PredictionContainer>
           <m.Graph />
         </m.HistoryContainer>

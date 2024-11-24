@@ -1,7 +1,7 @@
 import React from 'react';
 import * as m from './style';
-import Header from '../../componenets/Header';
-import NewMemberForm from '../../componenets/Prediction/PredictionForm';
+import Header from '../../components/Header';
+import NewMemberForm from '../../components/Prediction/PredictionForm';
 
 const PredictionPage: React.FC = () => {
   return (

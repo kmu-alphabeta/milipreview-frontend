@@ -2,7 +2,7 @@ import * as m from './style';
 import { categories } from '../../data/category';
 import Header from '../../components/Header/index';
 import Profile from '../../components/Profile/index';
-import Prediction from '../../components/Prediction';
+import PredictionForm from '../../components/Prediction/PredictionForm';
 import { useNavigate } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
@@ -51,7 +51,7 @@ const MainPage: React.FC = () => {
             />
           </div>
           <span style={{ marginLeft: '6%' }}>최근 예측 기록</span>
-          <Prediction />
+          <PredictionForm />
         </m.RightBox>
       </m.InnerContainer>
     </m.Container>

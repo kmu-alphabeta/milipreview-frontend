@@ -39,18 +39,20 @@ const MainPage: React.FC = () => {
   };
   return (
     <h.Container>
-      <img
-        onClick={onClick}
-        src={Logo}
-        alt="Mili Preview Logo"
-        style={{ width: '95px', height: '30px', cursor: 'pointer' }}
-      />
+      {!isFirst && (
+        <img
+          onClick={onClick}
+          src={Logo}
+          alt="Mili Preview Logo"
+          style={{ width: '95px', height: '30px', cursor: 'pointer' }}
+        />
+      )}
       {isFirst ? (
         <img
           src={KakaoLogo}
           alt="Kakao Login"
           onClick={onKakaoClick}
-          style={{ cursor: 'pointer' }}
+          style={{ marginLeft: 'auto', cursor: 'pointer' }}
         />
       ) : (
         <h.ButtonContainer>

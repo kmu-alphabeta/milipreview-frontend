@@ -1,6 +1,6 @@
 import React from 'react';
 import * as m from './style';
-import Header from '../../componenets/Header/index';
+import Header from '../../components/Header/index';
 
 const OnboardingPage: React.FC = () => {
   return (

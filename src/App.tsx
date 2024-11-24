@@ -5,6 +5,7 @@ import OnboardingPage from './pages/OnboardingPage/OnboardingPage';
 import PredictionPage from './pages/PredictionPage/PredictionPage';
 import GlobalStyle from './styles/GlobalStyles';
 import './App.css';
+import MyPage from './pages/MyPage';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/prediction" element={<PredictionPage />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <GlobalStyle />
     </BrowserRouter>

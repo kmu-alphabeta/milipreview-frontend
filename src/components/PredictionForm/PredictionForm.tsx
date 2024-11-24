@@ -3,12 +3,15 @@ import axios from 'axios';
 import * as m from './style';
 import styled from 'styled-components';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_TOKEN = process.env.REACT_APP_API_TOKEN;
+
 const Result = styled.div`
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    text-align: left;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  text-align: left;
 `;
 
 const PredictionForm = () => {
@@ -17,21 +20,16 @@ const PredictionForm = () => {
   const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string }>({}); // 선택된 옵션들
   const [isSubmitting, setIsSubmitting] = useState(false); // 제출 상태
   const [submissionResult, setSubmissionResult] = useState<any>(null); // 제출 결과
-  const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJ0eXBlIjoia2FrYW8iLCJ2YWx1ZSI6IjM3OTg4Njg1NDgiLCJpYXQiOjE3MzI0NTQzNDMsImV4cCI6MjczMjU0MDc0M30.4jUSWixG-zOHelUCRZ1u-ZPMoDyo_KcuTOGllXC7ka0';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          'https://milipreview-api.kookm.in/form/ARMY/GENERAL',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-          }
-        );
+        const response = await axios.get(`${API_BASE_URL}/form/ARMY/GENERAL`, {
+          headers: {
+            Authorization: `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json',
+          },
+        });
         setApiData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -67,17 +65,32 @@ const PredictionForm = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    // 서버에 보낼 데이터 구성
+    // 군종(military)와 세부 타입(subtype) 추출 및 변환
+    const militaryMapping: { [key: string]: string } = {
+      육군: 'ARMY',
+      해군: 'NAVY',
+      공군: 'AIRFORCE',
+    };
+
+    const subtypeMapping: { [key: string]: string } = {
+      일반: 'GENERAL',
+      특수: 'SPECIAL',
+    };
+
+    const militaryRaw = apiData?.militaryType || '육군'; // 기본값: 육군
+    const subtypeRaw = apiData?.subtype || '일반'; // 기본값: 일반
+
+    const military = militaryMapping[militaryRaw] || 'ARMY';
+    const subtype = subtypeMapping[subtypeRaw] || 'GENERAL';
+
     const formData = {
-      militaryType: apiData.militaryType, // 예: "육군/일반"
+      militaryType: apiData?.militaryType || 'ARMY',
       form: apiData.form.map((item: any) => {
         const selectedOption = selectedOptions[item.name];
-
-        // group 값이 null이면 제외
         const result: any = {
           name: item.name,
-          type: item.type || 'radio', // 기본값은 'radio'
-          score: selectedOption ? item.score[selectedOption] : null, // 숫자 값만 전송
+          type: item.type || 'radio',
+          score: selectedOption ? item.score[selectedOption] : null,
         };
 
         if (item.group) {
@@ -88,25 +101,25 @@ const PredictionForm = () => {
       }),
     };
 
-    console.log('전송 데이터:', JSON.stringify(formData, null, 2)); // 디버깅용 로그
+    // 동적 URL 생성
+    const postUrl = `${API_BASE_URL}/form/calculate/${military}/${subtype}`;
+
+    console.log('전송 데이터:', JSON.stringify(formData, null, 2));
+    console.log('POST 요청 URL:', postUrl);
 
     try {
-      const response = await axios.post(
-        'https://milipreview-api.kookm.in/form/calculate',
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // 인증 토큰
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      console.log('제출 성공:', response.data); // 성공 응답 처리
-      setSubmissionResult(response.data); // 결과 상태에 저장
+      const response = await axios.post(postUrl, formData, {
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('제출 성공:', response.data);
+      setSubmissionResult(response.data);
     } catch (error: any) {
       console.error('제출 실패:', error);
       if (error.response) {
-        console.error('서버 응답 메시지:', error.response.data.message); // 서버에서 보낸 에러 메시지
+        console.error('서버 응답 메시지:', error.response.data.message);
       }
     } finally {
       setIsSubmitting(false);
@@ -158,14 +171,6 @@ const PredictionForm = () => {
             </m.Button>
           </m.ButtonContainer>
         </>
-      )}
-
-      {/* 제출 결과 표시 */}
-      {submissionResult && (
-        <Result>
-          <strong>제출 결과:</strong>
-          <pre>{JSON.stringify(submissionResult, null, 2)}</pre>
-        </Result>
       )}
     </m.Container>
   );

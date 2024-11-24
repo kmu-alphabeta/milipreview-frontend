@@ -35,7 +35,6 @@ const PredictionForm = () => {
     <PageContainer>
       {renderComponent()}
       <m.ButtonContainer>
-        {/* 이전 버튼 */}
         <m.Button
           onClick={() => setStep(step - 1)}
           disabled={step === 1}
@@ -47,7 +46,6 @@ const PredictionForm = () => {
           이전
         </m.Button>
 
-        {/* 다음 버튼 */}
         <m.Button
           onClick={() => setStep(step + 1)}
           disabled={step === 4}

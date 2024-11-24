@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
 import KakaoLogo from '../../assets/kakao_login_medium_narrow.png';
+
 const MainPage: React.FC = () => {
-  const [isFirst, setIsFirst] = useState(true);
+  const [isFirst, setIsFirst] = useState(false); //첫방문 카카오 로그인
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   //Logo Click Event
   const navigate = useLocation();
+  useEffect(() => {
+    if (navigate.pathname === '/onboarding') {
+      setIsFirst(true);
+    }
+  }, [navigate.pathname]);
+
   const onClick = () => {
     if (navigate.pathname === '/') {
       window.location.reload(); //홈 새로고침

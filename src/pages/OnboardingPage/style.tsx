@@ -1,80 +1,30 @@
 import styled, { keyframes } from 'styled-components';
 
-interface AnimatedBoxProps {
-  delay: number;
-}
-
 const HEADER_HEIGHT = 80;
-
-const scrollDown = keyframes`
-    0% {
-        top: 300px;
-    }
-    100% {
-        top: calc(100vh);
-    }
-`;
 
 export const Container = styled.div`
     position: relative;
     margin: 0% 16%;
     margin-bottom: 20px;
     overflow: hidden;
-    z-index: 2;
 `;
 
 export const ContentWrapper = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
     width: 100%;
     height: calc(100vh - ${HEADER_HEIGHT}px);
-    position: relative;
-    z-index: 2; /* 컨텐츠를 사각형보다 위로 올립니다 */
-`;
-
-export const LeftContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    gap: 20px;
-    padding: 20px;
-`;
-
-export const RightContent = styled.div`
-    position: absolute;
-    top: ${HEADER_HEIGHT}px;
-    right: 0;
-    width: 50%;
-    height: calc(100vh - ${HEADER_HEIGHT}px);
-    overflow: hidden;
-    z-index: 1;
-`;
-
-export const Column = styled.div`
-    position: relative;
-    width: 50%;
-    height: 100%;
-    float: left;
-`;
-
-export const Title = styled.h1`
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+    padding-top: 20%;
 `;
 
 export const Text = styled.p`
-    font-size: 16px;
-    color: #666;
-`;
-
-export const AnimatedBox = styled.div<AnimatedBoxProps>`
-    position: absolute;
-    width: 100%;
-    padding-top: 100%;
-    background-color: #e4e4e4;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-    animation: ${scrollDown} 10s linear infinite;
-    animation-delay: ${(props) => props.delay}s;
-    z-index: 0;
+    font-size: 60px;
+    font-weight: bold;
+    color: #30553A;
+    line-height: 1.5;
+    text-align: center;
+    white-space: pre-line;
 `;

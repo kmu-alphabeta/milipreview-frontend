@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as m from './style';
-import styled from 'styled-components';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_TOKEN = process.env.REACT_APP_API_TOKEN;
-
-const Result = styled.div`
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  text-align: left;
-`;
 
 const PredictionForm = () => {
   const [apiData, setApiData] = useState<any>(null); // 전체 API 데이터
@@ -65,7 +56,6 @@ const PredictionForm = () => {
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    // 군종(military)와 세부 타입(subtype) 추출 및 변환
     const militaryMapping: { [key: string]: string } = {
       육군: 'ARMY',
       해군: 'NAVY',
@@ -101,7 +91,6 @@ const PredictionForm = () => {
       }),
     };
 
-    // 동적 URL 생성
     const postUrl = `${API_BASE_URL}/form/calculate/${military}/${subtype}`;
 
     console.log('전송 데이터:', JSON.stringify(formData, null, 2));

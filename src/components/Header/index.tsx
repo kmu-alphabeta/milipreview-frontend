@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as h from './style';
 import Logo from '../../assets/MILI PREVIEW.svg';
-import KakaoLogo from '../../assets/kakao_login_medium_narrow.png';
+import Kakao from '../Kakao/index';
 
 const MainPage: React.FC = () => {
   const [isFirst, setIsFirst] = useState(false); //첫방문 카카오 로그인
@@ -25,9 +25,6 @@ const MainPage: React.FC = () => {
   const onHistoryClick = () => {
     window.location.href = '/mypage'; // 마이페이지로 이동
   };
-  const onKakaoClick = () => {
-    window.location.href = '/kakao'; // 카카오 로그인 페이지로 이동
-  };
   //Logout Button Click Event
   const onLogoutClick = () => {
     if (isLoggedIn) {
@@ -48,12 +45,7 @@ const MainPage: React.FC = () => {
         />
       )}
       {isFirst ? (
-        <img
-          src={KakaoLogo}
-          alt="Kakao Login"
-          onClick={onKakaoClick}
-          style={{ marginLeft: 'auto', cursor: 'pointer' }}
-        />
+        <Kakao />
       ) : (
         <h.ButtonContainer>
           <h.TextButton onClick={onHistoryClick}>

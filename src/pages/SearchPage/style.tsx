@@ -73,7 +73,7 @@ export const Button = styled.button`
     transform 0.2s;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #12563b;
     transform: translateY(-2px);
   }
 

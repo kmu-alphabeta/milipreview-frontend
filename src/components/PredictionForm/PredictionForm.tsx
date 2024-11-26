@@ -3,7 +3,6 @@ import axios from 'axios';
 import * as m from './style';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
-const API_TOKEN = process.env.REACT_APP_API_TOKEN || '';
 
 interface PredictionFormProps {
   category: string | null;
@@ -26,11 +25,15 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
       }
 
       try {
+        const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
+        if (!token) {
+          throw new Error('토큰이 없습니다. 로그인하세요.');
+        }
         const response = await axios.get(
           `${API_BASE_URL}/form/${baseCategory}/${category}`,
           {
             headers: {
-              Authorization: `Bearer ${API_TOKEN}`,
+              Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
             },
           }
@@ -103,12 +106,16 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
     const formData = prepareFormData(apiData, selectedOptions);
 
     try {
+      const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
+      if (!token) {
+        throw new Error('토큰이 없습니다. 로그인하세요.');
+      }
       const response = await axios.post(
         `${API_BASE_URL}/form/calculate/${baseCategory}/${category}`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         }

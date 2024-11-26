@@ -17,6 +17,7 @@ const PredictionPage: React.FC = () => {
   const [isCategorySelected, setIsCategorySelected] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [baseCategory, setBaseCategory] = useState<string | null>(null);
+  const [headerText, setHeaderText] = useState<string>('모집병 합격 예측');
 
   const location = useLocation();
   const { category: koreanBaseCategory, specialty } = location.state || {}; // 한글 baseCategory 받기
@@ -26,21 +27,27 @@ const PredictionPage: React.FC = () => {
     setSelectedCategory(category);
     setBaseCategory(baseCategoryKorean);
     setIsCategorySelected(true);
+
+    // 헤더 텍스트 업데이트
+    setHeaderText(`모집병 합격 예측: ${koreanBaseCategory} - ${specialty} - ${category}`);
   };
 
   return (
     <m.Background>
       <m.Container>
         <Header />
-        {!isCategorySelected ? (
-          <PredictionCategory
-            onCategorySelect={handleCategorySelect}
-            koreanBaseCategory={koreanBaseCategory}
-            specialty={specialty}
-          />
-        ) : (
-          <PredictionForm category={selectedCategory} baseCategory={baseCategory} />
-        )}
+        <m.HeaderText>{headerText}</m.HeaderText>
+        <m.inContiner>
+          {!isCategorySelected ? (
+            <PredictionCategory
+              onCategorySelect={handleCategorySelect}
+              koreanBaseCategory={koreanBaseCategory}
+              specialty={specialty}
+            />
+          ) : (
+            <PredictionForm category={selectedCategory} baseCategory={baseCategory} />
+          )}
+        </m.inContiner>
       </m.Container>
     </m.Background>
   );

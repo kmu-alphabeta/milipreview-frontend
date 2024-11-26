@@ -105,7 +105,7 @@ const PredictionCategory: React.FC<PredictionCategoryProps> = ({
       ) : (
         <>
           <m.Title>
-            {koreanBaseCategory}의 {specialty}를 선택하세요
+            모집상세를 선택하세요
           </m.Title>
           <m.InputSection>
             <m.DateOfBirthContainer>
@@ -119,7 +119,6 @@ const PredictionCategory: React.FC<PredictionCategoryProps> = ({
                   </option>
                 ))}
               </m.Dropdown>
-              <m.DropdownLabel>카테고리</m.DropdownLabel>
             </m.DateOfBirthContainer>
             <m.ButtonContainer>
               <m.Button onClick={handleConfirm}>확인</m.Button>

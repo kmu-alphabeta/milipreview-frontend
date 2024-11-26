@@ -3,6 +3,7 @@ import * as m from './style';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Comments from '../Comments/Comments';
+import Header from '../Header';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -84,6 +85,7 @@ const CommunityDetail: React.FC = () => {
 
   return (
     <m.Container>
+      <Header />
       <m.Header>{post.title}</m.Header>
       <m.Detail>
         <m.DetailAuthor>작성자: {post.author}</m.DetailAuthor>

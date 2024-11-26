@@ -22,9 +22,15 @@ interface HistoryItem {
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
-  const onClickText = () => {
-    navigate('/');
+
+  // 카테고리 클릭 시 이동 처리
+  const onClickText = (category: { type: string; specialty: string }) => {
+    console.log('Navigating with category:', category);
+    navigate('/prediction', {
+      state: { category: category.type, specialty: category.specialty },
+    });
   };
+
   const token = localStorage.getItem('token');
   console.log('토큰:', token);
   const { isLoading, isError, data } = useQuery<HistoryItem[]>({
@@ -61,6 +67,7 @@ const MainPage: React.FC = () => {
   const [army, specialty] = topTwoRecords
     ? topTwoRecords[0].category.split('/')
     : ['', ''];
+
   return (
     <m.Container>
       <Header />
@@ -82,7 +89,12 @@ const MainPage: React.FC = () => {
                   <m.CategoryTitle>{category.type}</m.CategoryTitle>
                   <m.SpecialtyContainer>
                     {category.specialties.map((specialty) => (
-                      <m.TextButton onClick={onClickText} key={specialty}>
+                      <m.TextButton
+                        onClick={() =>
+                          onClickText({ type: category.type, specialty })
+                        }
+                        key={specialty}
+                      >
                         {specialty}
                       </m.TextButton>
                     ))}

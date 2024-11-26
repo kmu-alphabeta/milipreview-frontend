@@ -21,7 +21,7 @@ const CommunityDetail: React.FC = () => {
         <m.DetailAuthor>작성자: {post.author}</m.DetailAuthor>
         <m.DetailDate>작성일: {post.createdAt}</m.DetailDate>
         <m.DetailContent>{post.content}</m.DetailContent>
-        <m.Button onClick={() => navigate(-1)}>뒤로가기</m.Button>
+        <m.GoBackButton onClick={() => navigate(-1)}>뒤로가기</m.GoBackButton>
       </m.Detail>
     </m.Container>
   );

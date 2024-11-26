@@ -2,6 +2,9 @@ import React from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { fetchKakaoToken } from '../../apis/auth';
+import useAuthStore from '../../stores/authStore';
+import Spinner from '../Spinner';
+
 const Auth: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -10,9 +13,14 @@ const Auth: React.FC = () => {
 
   const tokenMutation = useMutation(fetchKakaoToken, {
     onSuccess: (data) => {
+      console.log('Login Success');
       console.log('onSuccess data:', data);
       if (data.token) {
         localStorage.setItem('token', JSON.stringify(data.token));
+        useAuthStore.setState({
+          isLoggedIn: true,
+          accessToken: data.accessToken,
+        });
         console.log('Token:', data.token);
       } else {
         console.error('Token이 없습니다:', data);
@@ -28,12 +36,13 @@ const Auth: React.FC = () => {
   React.useEffect(() => {
     if (OAuth) {
       tokenMutation.mutate(OAuth); // React Query 사용
+      navigate('/');
     } else {
       console.error('Authorization code not found');
     }
   }, [OAuth]);
 
-  return <div>잠시만 기다려 주세요!</div>;
+  return <Spinner />;
 };
 
 export default Auth;

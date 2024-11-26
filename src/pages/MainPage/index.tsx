@@ -1,7 +1,7 @@
 import * as m from './style';
 import { categories } from '../../data/category';
 import Header from '../../components/Header/index';
-import Profile from '../../components/Profile/index';
+import ProfileContainer from '../../components/ProfileContainer';
 import Prediction from '../../components/Prediction';
 import { useNavigate } from 'react-router-dom';
 
@@ -43,12 +43,7 @@ const MainPage: React.FC = () => {
         </m.LeftContainer>
         <m.RightBox>
           <div style={{ marginLeft: '6%' }}>
-            <Profile
-              userData={{
-                name: '박건민',
-                profileImage: '',
-              }}
-            />
+            <ProfileContainer showEmail={false} />
           </div>
           <span style={{ marginLeft: '6%' }}>최근 예측 기록</span>
           <Prediction />

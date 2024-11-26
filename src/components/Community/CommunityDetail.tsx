@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as m from './style';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Comments from '../Comments/Comments';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -93,6 +94,7 @@ const CommunityDetail: React.FC = () => {
           <m.DeleteButton onClick={handleDelete}>삭제</m.DeleteButton>
         </m.ButtonContainer>
       </m.Detail>
+      <Comments postId={post.id} />
     </m.Container>
   );
 };

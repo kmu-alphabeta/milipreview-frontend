@@ -16,5 +16,18 @@ export const Container = styled.div`
     gap: 15px;
     height: 100vh;
     overflow: hidden;
+    position: relative; /* HeaderText 위치를 위한 상대 위치 설정 */
 `;
 
+export const HeaderText = styled.h1`
+    position: absolute;
+    top: 15%;
+    left: 0%;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+`;
+
+export const inContiner = styled.div`
+  margin-top: 5%;;
+  `;

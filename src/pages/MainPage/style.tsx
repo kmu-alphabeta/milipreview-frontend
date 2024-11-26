@@ -49,6 +49,18 @@ export const RightBox = styled.div`
   box-shadow: 0px 2px 4px 0px #e4e4e4;
 `;
 
+export const RightInnerBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 7px;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px #e4e4e4;
+  gap: 20px;
+`;
+
 export const Image = styled.div`
   width: 100%;
   height: 125px;
@@ -102,4 +114,25 @@ export const TextButton = styled.div`
   font-size: 15px;
   color: black;
   cursor: pointer;
+`;
+
+export const Text = styled.div`
+  font-size: 15px;
+  font-weight: var(--semi-bold);
+  color: black;
+  text-align: center;
+  width: 220px;
+  line-height: 1.4; /* 줄 간격을 조절하여 가독성 향상 */
+  word-break: break-word;
+  white-space: normal; /* 너비를 벗어나면 줄바꿈 */
+`;
+
+export const smText = styled.div`
+  font-size: 13px;
+  color: black;
+  text-align: center;
+  width: 220px;
+  line-height: 1.4; /* 줄 간격을 조절하여 가독성 향상 */
+  word-break: break-word;
+  white-space: normal; /* 너비를 벗어나면 줄바꿈 */
 `;

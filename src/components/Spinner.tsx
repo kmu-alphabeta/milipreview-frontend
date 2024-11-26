@@ -12,15 +12,15 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
 `;
 
 const Spinner: React.FC = () => {
   return (
     <Container>
-      <ReactLoading type="spin" color="#437550" height={160} width={160} />
-      <Text>로그인 중입니다...</Text>
+      <ReactLoading type="spin" color="#437550" height={130} width={130} />
+      <Text>요청을 처리 중입니다.</Text>
     </Container>
   );
 };

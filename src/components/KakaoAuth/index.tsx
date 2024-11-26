@@ -10,18 +10,15 @@ const Auth: React.FC = () => {
   const [searchParams] = useSearchParams();
   const OAuth = searchParams.get('code'); // 인가 코드 추출
   console.log('인가코드:', OAuth);
+  const { login } = useAuthStore();
 
   const tokenMutation = useMutation(fetchKakaoToken, {
     onSuccess: (data) => {
       console.log('Login Success');
       console.log('onSuccess data:', data);
       if (data.token) {
-        localStorage.setItem('token', JSON.stringify(data.token));
-        useAuthStore.setState({
-          isLoggedIn: true,
-          accessToken: data.accessToken,
-        });
-        console.log('Token:', data.token);
+        localStorage.setItem('token', data.token);
+        login(data.token);
       } else {
         console.error('Token이 없습니다:', data);
       }

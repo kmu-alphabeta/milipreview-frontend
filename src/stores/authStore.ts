@@ -14,14 +14,12 @@ const useAuthStore = create<AuthState>()(
       isLoggedIn: false,
       accessToken: null,
       login: (accessToken: string) => {
-        console.log(accessToken);
         set({ isLoggedIn: true, accessToken });
       },
       logout: () => {
         // 상태 초기화
         set({ isLoggedIn: false, accessToken: null });
         localStorage.clear();
-        sessionStorage.clear();
       },
     }),
     {

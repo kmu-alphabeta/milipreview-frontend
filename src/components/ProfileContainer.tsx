@@ -17,7 +17,7 @@ const ProfileContainer: React.FC<ProfileContainerProps> = ({ showEmail }) => {
       const token = localStorage.getItem('token');
       if (token && isLoggedIn) {
         try {
-          const data = await getKakaoUserInfo(JSON.parse(token));
+          const data = await getKakaoUserInfo(token);
           setUserInfo({
             id: data.id,
             name: data.name,

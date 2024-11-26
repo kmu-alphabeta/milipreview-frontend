@@ -6,6 +6,7 @@ import PredictionPage from './pages/PredictionPage/PredictionPage';
 import GlobalStyle from './styles/GlobalStyles';
 import './App.css';
 import MyPage from './pages/MyPage';
+import CommunityPage from './pages/CommunityPage/CommunityPage'; // CommunityPage 추가
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/prediction" element={<PredictionPage />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/community/*" element={<CommunityPage />} /> {/* CommunityPage 라우트 추가 */}
       </Routes>
       <GlobalStyle />
     </BrowserRouter>

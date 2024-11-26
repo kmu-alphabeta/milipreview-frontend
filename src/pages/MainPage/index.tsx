@@ -1,5 +1,5 @@
 import * as m from './style';
-import React, { useState } from 'react';
+import React from 'react';
 import { categories } from '../../data/category';
 import Header from '../../components/Header/index';
 import ProfileContainer from '../../components/ProfileContainer';
@@ -23,26 +23,23 @@ interface HistoryItem {
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
 
-  // 카테고리 클릭 시 이동 처리
   const onClickText = (category: { type: string; specialty: string }) => {
-    console.log('Navigating with category:', category);
     navigate('/prediction', {
       state: { category: category.type, specialty: category.specialty },
     });
   };
 
-  const token = localStorage.getItem('token');
-  console.log('토큰:', token);
+  const token = localStorage.getItem('token') || '';
   const { isLoading, isError, data } = useQuery<HistoryItem[]>({
     queryKey: ['history'],
-    queryFn: () => getHistory(token as string),
+    queryFn: () => getHistory(token),
   });
 
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
+  if (isError || !data) {
     return (
       <div
         style={{
@@ -52,19 +49,21 @@ const MainPage: React.FC = () => {
           height: '100vh',
         }}
       >
-        정보를 불러오지
-        <br />
-        못했습니다....
+        정보를 불러오지 못했습니다....
       </div>
     );
   }
+
   const topTwoRecords = data
-    ?.sort((a, b) => b.probability - a.probability) // probability 내림차순 정렬
-    .slice(0, 2);
-  const average = topTwoRecords
-    ? Math.abs(topTwoRecords[0].predictedCutoff - topTwoRecords[0].score)
-    : 0;
-  const [army, specialty] = topTwoRecords
+    ?.sort((a, b) => b.probability - a.probability)
+    .slice(0, 2) || [];
+
+  const average =
+    topTwoRecords.length > 0
+      ? Math.abs(topTwoRecords[0].predictedCutoff - topTwoRecords[0].score)
+      : 0;
+
+  const [army] = topTwoRecords.length > 0
     ? topTwoRecords[0].category.split('/')
     : ['', ''];
 
@@ -115,24 +114,21 @@ const MainPage: React.FC = () => {
               지원자님에게 추천되는
               <br /> 맞춤 직종이에요!
             </m.Text>
-            <m.Text
-              style={{
-                color: 'red',
-              }}
-            >
+            <m.Text style={{ color: 'red' }}>
               추천하는 군종 : {army}
             </m.Text>
             <img src={Group} alt="Group" />
             <m.Text>
               그중에서도 <br />
               <span style={{ color: 'red' }}>
-                '{topTwoRecords ? topTwoRecords[0].category : 'N/A'}'
+                '{topTwoRecords.length > 0
+                ? topTwoRecords[0].category
+                : 'N/A'}'
               </span>
               가 합격될 가능성이 가장 높아요 !
             </m.Text>
             <m.smText>
-              ❗지원자님의 지원 경향과 합격률을 계산했을 때 {army}이 가장
-              적합해요!
+              ❗지원자님의 지원 경향과 합격률을 계산했을 때 {army}이 가장 적합해요!
             </m.smText>
             <m.smText>
               ❗다른 지원자보다 합격될 확률이{' '}

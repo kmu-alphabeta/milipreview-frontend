@@ -24,6 +24,12 @@ const Header: React.FC = () => {
   const onHistoryClick = () => {
     window.location.href = '/mypage';
   };
+  const onCommunityClick = () => {
+    window.location.href = '/community';
+  };
+  const onSerachClick = () => {
+    window.location.href = '/search';
+  };
 
   // 로그아웃 버튼 클릭
   const onLogoutClick = () => {
@@ -51,6 +57,8 @@ const Header: React.FC = () => {
           <h.TextButton onClick={onHistoryClick}>
             예측 조회 및 관리
           </h.TextButton>
+          <h.TextButton onClick={onCommunityClick}>커뮤니티</h.TextButton>
+          <h.TextButton onClick={onSerachClick}>둘러보기</h.TextButton>
           <h.TextButton onClick={onLogoutClick}>
             {isLoggedIn ? '로그아웃' : '로그인'}
           </h.TextButton>

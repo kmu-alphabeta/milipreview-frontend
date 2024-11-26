@@ -4,7 +4,6 @@ import * as m from './style';
 import { Link } from 'react-router-dom';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
-const API_TOKEN = process.env.REACT_APP_API_TOKEN || ''; // 인증 토큰
 
 const CommunityView: React.FC = () => {
   const [posts, setPosts] = useState<any[]>([]); // 게시글 목록 상태
@@ -15,10 +14,14 @@ const CommunityView: React.FC = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
+        if (!token) {
+          throw new Error('토큰이 없습니다. 로그인하세요.');
+        }
         setLoading(true); // 로딩 시작
         const response = await axios.get(`${API_BASE_URL}/posts`, {
           headers: {
-            Authorization: `Bearer ${API_TOKEN}`, // 인증 토큰 추가
+            Authorization: `Bearer ${token}`, // 인증 토큰 추가
             'Content-Type': 'application/json',
           },
         }); // API 호출

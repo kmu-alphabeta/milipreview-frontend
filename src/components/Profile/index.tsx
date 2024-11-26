@@ -5,29 +5,32 @@ import UserImg from '../../assets/user.svg';
 interface ProfileProps {
   userData: {
     name: string;
-    profileImage: string;
-    email?: string;
+    img: string;
+    email: string | null;
   };
+  showEmail?: boolean;
 }
 
-const Profile: React.FC<ProfileProps> = ({ userData }) => {
+const Profile: React.FC<ProfileProps> = ({ userData, showEmail }) => {
   const navigate = useNavigate();
+  console.log('userData', userData);
   const goToMyPage = () => {
     navigate('/mypage');
   };
+
   return (
     <p.Container>
       {userData.name ? (
         <>
-          {userData.profileImage ? (
-            <p.ProfileImage src={userData.profileImage} />
+          {userData.img ? (
+            <p.ProfileImage src={userData.img} />
           ) : (
             <p.ProfileImage src={UserImg} />
           )}
 
           <p.InnerContainer onClick={goToMyPage}>
             <p.UserName>{userData.name}님</p.UserName>
-            {userData.email && <p.Email>{userData.email}</p.Email>}
+            {showEmail && <p.Email>{userData.email}</p.Email>}
           </p.InnerContainer>
         </>
       ) : (

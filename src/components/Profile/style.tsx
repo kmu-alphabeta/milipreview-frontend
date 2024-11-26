@@ -18,9 +18,8 @@ export const ProfileImage = styled.div<{ src: string }>`
   height: 40px;
   border-radius: 50%;
   background-color: var(--gray);
-  ${(props) =>
-    props.src &&
-    `background-image: url(${props.src});`}//props.src가 있는 경우에만 뒤의 코드가 실행, 사용자 기본화면 없으면 회색으로 표시
+  background-size: cover;
+  ${(props) => props.src && `background-image: url(${props.src});`}
 `;
 
 export const UserName = styled.span`

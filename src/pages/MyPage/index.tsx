@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Header from '../../components/Header/index';
-import Profile from '../../components/Profile/index';
 import Prediction from '../../components/Prediction';
 import * as m from './style';
+import ProfileContainer from '../../components/ProfileContainer';
 
 const MyPage: React.FC = () => {
   return (
@@ -10,13 +10,7 @@ const MyPage: React.FC = () => {
       <Header />
       <m.InnerContainer>
         <div style={{ marginBottom: '10px' }}>
-          <Profile
-            userData={{
-              name: '박건민',
-              profileImage: '',
-              email: 'phk_@kookmin.ac.kr',
-            }}
-          />
+          <ProfileContainer showEmail={true} />
         </div>
         히스토리 조회
         <m.HistoryContainer>

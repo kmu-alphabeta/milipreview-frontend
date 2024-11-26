@@ -8,7 +8,8 @@ const OnboardingPage: React.FC = () => {
       <Header />
       <m.ContentWrapper>
         <m.Text>
-          군대 합격 예측<br />
+          군대 합격 예측
+          <br />
           밀리프리뷰에서 쉽고 간편하게
         </m.Text>
       </m.ContentWrapper>

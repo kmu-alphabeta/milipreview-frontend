@@ -13,7 +13,7 @@ interface HistoryItem {
   timestamp: string;
 }
 
-const Prediction: React.FC = () => {
+const RecommendPrediction: React.FC = () => {
   const token = localStorage.getItem('token');
   console.log('토큰:', token);
   const { isLoading, isError, data } = useQuery<HistoryItem[]>({
@@ -41,10 +41,12 @@ const Prediction: React.FC = () => {
       </div>
     );
   }
-
+  const topTwoRecords = data
+    ?.sort((a, b) => b.probability - a.probability) // probability 내림차순 정렬
+    .slice(0, 2);
   return (
     <p.Container>
-      {data?.map((item: HistoryItem) => {
+      {topTwoRecords?.map((item: HistoryItem) => {
         const [army, specialty] = item.category.split('/');
 
         return (
@@ -60,11 +62,6 @@ const Prediction: React.FC = () => {
               >
                 {item.probability}%
               </p.Probability>
-              <p.ClickButton>
-                보러
-                <br />
-                가기
-              </p.ClickButton>
             </p.RightBox>
           </p.InnerContainer>
         );
@@ -73,4 +70,4 @@ const Prediction: React.FC = () => {
   );
 };
 
-export default Prediction;
+export default RecommendPrediction;

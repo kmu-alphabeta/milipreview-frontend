@@ -54,18 +54,16 @@ const MainPage: React.FC = () => {
     );
   }
 
-  const topTwoRecords = data
-    ?.sort((a, b) => b.probability - a.probability)
-    .slice(0, 2) || [];
+  const topTwoRecords =
+    data?.sort((a, b) => b.probability - a.probability).slice(0, 2) || [];
 
   const average =
     topTwoRecords.length > 0
       ? Math.abs(topTwoRecords[0].predictedCutoff - topTwoRecords[0].score)
       : 0;
 
-  const [army] = topTwoRecords.length > 0
-    ? topTwoRecords[0].category.split('/')
-    : ['', ''];
+  const [army] =
+    topTwoRecords.length > 0 ? topTwoRecords[0].category.split('/') : ['', ''];
 
   return (
     <m.Container>
@@ -108,27 +106,33 @@ const MainPage: React.FC = () => {
             <ProfileContainer showEmail={false} />
           </div>
           <RecommendPrediction />
-          <span style={{ marginLeft: '6%' }}>맞춤형 추천 기록</span>
+          <div />
+          <h1
+            style={{
+              textAlign: 'center',
+              fontWeight: '700',
+              fontSize: '20px',
+            }}
+          >
+            맞춤형 추천 기록
+          </h1>
           <m.RightInnerBox>
             <m.Text>
               지원자님에게 추천되는
               <br /> 맞춤 직종이에요!
             </m.Text>
-            <m.Text style={{ color: 'red' }}>
-              추천하는 군종 : {army}
-            </m.Text>
+            <m.Text style={{ color: 'red' }}>추천하는 군종 : {army}</m.Text>
             <img src={Group} alt="Group" />
             <m.Text>
               그중에서도 <br />
               <span style={{ color: 'red' }}>
-                '{topTwoRecords.length > 0
-                ? topTwoRecords[0].category
-                : 'N/A'}'
+                '{topTwoRecords.length > 0 ? topTwoRecords[0].category : 'N/A'}'
               </span>
               가 합격될 가능성이 가장 높아요 !
             </m.Text>
             <m.smText>
-              ❗지원자님의 지원 경향과 합격률을 계산했을 때 {army}이 가장 적합해요!
+              ❗지원자님의 지원 경향과 합격률을 계산했을 때 {army}이 가장
+              적합해요!
             </m.smText>
             <m.smText>
               ❗다른 지원자보다 합격될 확률이{' '}

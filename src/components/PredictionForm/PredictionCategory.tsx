@@ -94,7 +94,7 @@ const PredictionCategory: React.FC<PredictionCategoryProps> = ({
       onCategorySelect(selectedOption, englishBaseCategory); // category와 영어 baseCategory 전달
     } else {
       console.error('No option selected.');
-      alert('옵션을 선택해주세요.');
+      alert('모집 상세를 선택해주세요.');
     }
   };
 
@@ -108,13 +108,13 @@ const PredictionCategory: React.FC<PredictionCategoryProps> = ({
       ) : (
         <>
           <m.Title>
-            모집상세를 선택하세요
+            모집 상세를 선택하세요
           </m.Title>
           <m.InputSection>
             <m.DateOfBirthContainer>
               <m.Dropdown value={selectedOption} onChange={handleOptionChange}>
                 <option value="" disabled>
-                  옵션을 선택하세요
+                  모집상세
                 </option>
                 {Object.entries(categories).map(([key, value]) => (
                   <option key={key} value={key}>

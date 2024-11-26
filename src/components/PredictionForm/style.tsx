@@ -55,17 +55,19 @@ export const Dropdown = styled.select`
     font-size: 20px;
     font-weight: normal;
     border: 1px solid #e4e4e4;
-    border-radius: 15px; /* 둥근 모서리 */
-    width: 110px; /* 원하는 가로 길이로 설정 */
-    text-align: right;
-    margin-left: 25px;
+    border-radius: 10px; /* 둥근 모서리 */
+    width: 70vh; /* 원하는 가로 길이로 설정 */
+    text-align: left;
+    appearance: none; /* 기본 화살표 제거 */
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+        border-color: #8DC59C; /* 포커스 시 색상 */
+        box-shadow: 0 0 4px rgba(141, 197, 156, 0.5);
+    }
 `;
 
-export const DropdownLabel = styled.span`
-    font-size: 20px;
-    color: #333;
-    margin-right: 25px;
-`;
 
 export const ButtonContainer = styled.div`
     display: flex;

@@ -133,11 +133,9 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
   };
 
   if (submissionResult) {
-    // 제출 결과 처리 (예: 결과 페이지로 이동하거나 결과 표시)
     return (
       <m.Container>
         <m.Title>제출이 완료되었습니다.</m.Title>
-        {/* 제출 결과를 표시하거나 다른 처리를 할 수 있습니다 */}
       </m.Container>
     );
   }
@@ -161,7 +159,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
                 onChange={handleOptionChange}
               >
                 <option value="" disabled>
-                  옵션을 선택하세요
+                  {currentName}
                 </option>
                 {currentScore &&
                   Object.entries(currentScore).map(([key, value]) => (

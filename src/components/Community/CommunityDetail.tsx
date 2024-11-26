@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
-const API_TOKEN = process.env.REACT_APP_API_TOKEN || '';
 
 interface Post {
   id: number;
@@ -23,9 +22,13 @@ const CommunityDetail: React.FC = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
+        const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
+        if (!token) {
+          throw new Error('토큰이 없습니다. 로그인하세요.');
+        }
         const response = await axios.get<Post>(`${API_BASE_URL}/posts/${id}`, {
           headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
         });

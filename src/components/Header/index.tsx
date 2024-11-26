@@ -54,7 +54,6 @@ const Header: React.FC = () => {
           <h.TextButton onClick={onLogoutClick}>
             {isLoggedIn ? '로그아웃' : '로그인'}
           </h.TextButton>
-          <h.TextButton>탈퇴하기</h.TextButton>
         </h.ButtonContainer>
       )}
     </h.Container>

@@ -47,7 +47,9 @@ export const GoBackButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 50vh;
+    position: absolute; /* 버튼을 고정 */
+    bottom: 20px; /* 하단에서 20px 띄움 */
+    right: 20px; /* 오른쪽에서 20px 띄움 */
 
     &:hover {
         background-color: #2D4F36;
@@ -131,24 +133,28 @@ export const TextArea = styled.textarea`
 export const Detail = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    justify-content: flex-start; /* 요소들이 위에서부터 차곡차곡 배치되도록 설정 */
+    gap: 10px; /* 요소 간 간격을 줄임 */
     width: 100%;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #e4e4e4;
     border-radius: 10px;
-    height: 70vh;
+    height: 70vh; /* 높이는 유지 */
+    position: relative; /* 버튼 위치 조정을 위한 설정 */
 `;
 
 export const DetailAuthor = styled.p`
     font-size: 16px;
     font-weight: 500;
     color: #000;
+    margin-bottom: 1vh; /* 간격 줄임 */
 `;
 
 export const DetailDate = styled.p`
     font-size: 14px;
     color: #555;
+    margin-bottom: 1vh; /* 간격 줄임 */
 `;
 
 export const DetailContent = styled.div`
@@ -156,4 +162,5 @@ export const DetailContent = styled.div`
     color: black;
     line-height: 1.6;
     word-wrap: break-word;
+    margin-bottom: 20px; /* 내용물과 버튼 간 적당한 간격 */
 `;

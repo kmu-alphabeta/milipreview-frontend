@@ -8,6 +8,7 @@ import CommunityWrite from './components/Community/CommunityWrite';
 import CommunityDetail from './components/Community/CommunityDetail';
 import GlobalStyle from './styles/GlobalStyles';
 import KakaoAuth from './components/KakaoAuth';
+import SearchPage from './pages/SearchPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 import MyPage from './pages/MyPage';
@@ -27,6 +28,7 @@ const App: React.FC = () => {
           <Route path="/community/write" element={<CommunityWrite />} />
           <Route path="/community/detail/:id" element={<CommunityDetail />} />
           <Route path="/oauth" element={<KakaoAuth />} />
+          <Route path="/search" element={<SearchPage />} />
         </Routes>
         <GlobalStyle />
       </BrowserRouter>

@@ -16,6 +16,14 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     } 
+    a {
+      text-decoration: none; /* 밑줄 제거 */
+      color: inherit; /* 텍스트 색상 상속 */
+    }
+
+    a:hover {
+      text-decoration: none; /* hover 상태에서도 밑줄 제거 */
+    }
     //미디어 쿼리
     @media screen and (max-width: 1260px) {
       width: 80%;

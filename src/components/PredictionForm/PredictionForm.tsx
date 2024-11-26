@@ -37,6 +37,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
         );
         setApiData(response.data);
         console.log(`${API_BASE_URL}/form/${baseCategory}/${category}`);
+        console.log(response.data);
         setError(null);
       } catch (error: any) {
         setError('데이터 로드 실패');
@@ -70,21 +71,36 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
     }
   };
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-
-    const formData = {
-      militaryType: category || 'UNKNOWN',
+  const prepareFormData = (apiData: any, selectedOptions: { [key: string]: string }) => {
+    return {
+      militaryType: apiData.militaryType || 'UNKNOWN', // militaryType 포함
       form: apiData.form.map((item: any) => {
-        const selectedOption = selectedOptions[item.name];
+        const selectedOption = selectedOptions[item.name]; // 사용자가 선택한 옵션
+        const score = selectedOption ? item.score[selectedOption] : null; // 선택된 점수
+
+        // group 데이터를 변환
+        const group = (item.group || []).map((groupItem: any) => ({
+          name: groupItem.name,
+          priority: groupItem.priority,
+          limit: groupItem.limit,
+        }));
+
+        // POST 데이터 구조에 맞게 변환
         return {
           name: item.name,
-          type: item.type || 'radio',
-          score: selectedOption ? item.score[selectedOption] : null,
-          group: item.group || null,
+          type: item.type,
+          group: group.length > 0 ? group : undefined, // group이 없으면 undefined
+          score: score !== null ? { [selectedOption]: score } : undefined, // score가 있으면 key-value 형태로 전달
         };
       }),
     };
+  };
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+
+    // prepareFormData 호출
+    const formData = prepareFormData(apiData, selectedOptions);
 
     try {
       const response = await axios.post(
@@ -98,13 +114,12 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
         }
       );
       setSubmissionResult(response.data);
-      console.log(`${API_BASE_URL}/form/${baseCategory}/${category}`);
-      console.log(formData);
+      console.log('전송된 데이터:', formData);
       console.log('성공');
     } catch (error: any) {
       setError('제출 실패');
       console.error('제출 실패:', error);
-      console.log(formData);
+      console.log('전송된 데이터:', formData);
     } finally {
       setIsSubmitting(false);
     }

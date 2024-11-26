@@ -97,6 +97,7 @@ const PredictionCategory: React.FC<PredictionCategoryProps> = ({
 
   return (
     <m.Container>
+
       {isLoading ? (
         <m.Title>로딩 중...</m.Title>
       ) : error ? (

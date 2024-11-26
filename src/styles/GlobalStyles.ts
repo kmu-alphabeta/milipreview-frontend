@@ -42,6 +42,15 @@ const GlobalStyle = createGlobalStyle`
         --regular: 25px;
         --large: 30px;
     }
+
+	a {
+		text-decoration: none; /* 밑줄 제거 */
+		color: inherit; /* 텍스트 색상 상속 */
+	}
+
+	a:hover {
+		text-decoration: none; /* hover 상태에서도 밑줄 제거 */
+	}
 `;
 
 export default GlobalStyle;

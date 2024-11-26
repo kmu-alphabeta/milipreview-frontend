@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as m from './style';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
+
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -39,6 +41,7 @@ const CommunityView: React.FC = () => {
 
   return (
     <m.Container>
+      <Header />
       <m.Header>커뮤니티</m.Header>
       <m.ButtonContainer>
         <Link to="/community/write">

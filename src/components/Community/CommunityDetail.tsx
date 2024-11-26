@@ -43,6 +43,26 @@ const CommunityDetail: React.FC = () => {
     fetchPost();
   }, [id]);
 
+  const handleDelete = async () => {
+    try {
+      const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
+      if (!token) {
+        throw new Error('토큰이 없습니다. 로그인하세요.');
+      }
+      await axios.delete(`${API_BASE_URL}/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      alert('게시글이 삭제되었습니다.');
+      navigate('/community'); // 삭제 후 커뮤니티 목록 페이지로 이동
+    } catch (error: any) {
+      console.error('게시글 작성자만 삭제할 수 있습니다.:', error);
+      alert('게시글 작성자만 삭제할 수 있습니다.');
+    }
+  };
+
   if (error) {
     return (
       <m.Container>
@@ -68,7 +88,10 @@ const CommunityDetail: React.FC = () => {
         <m.DetailAuthor>작성자: {post.author}</m.DetailAuthor>
         <m.DetailDate>작성일: {post.createdAt}</m.DetailDate>
         <m.DetailContent>{post.content}</m.DetailContent>
-        <m.GoBackButton onClick={() => navigate(-1)}>뒤로가기</m.GoBackButton>
+        <m.ButtonContainer>
+          <m.GoBackButton onClick={() => navigate(-1)}>뒤로가기</m.GoBackButton>
+          <m.DeleteButton onClick={handleDelete}>삭제</m.DeleteButton>
+        </m.ButtonContainer>
       </m.Detail>
     </m.Container>
   );

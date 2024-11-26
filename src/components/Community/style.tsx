@@ -23,6 +23,7 @@ export const ButtonContainer = styled.div`
     margin-top: 10px;
 `;
 
+
 export const Button = styled.button`
     padding: 10px 20px;
     background-color: var(--green);
@@ -48,11 +49,29 @@ export const GoBackButton = styled.button`
     cursor: pointer;
     transition: background-color 0.3s ease;
     position: absolute; /* 버튼을 고정 */
-    bottom: 20px; /* 하단에서 20px 띄움 */
-    right: 20px; /* 오른쪽에서 20px 띄움 */
+    bottom: 2vh; /* 하단에서 20px 띄움 */
+    right: 2vh; /* 오른쪽에서 20px 띄움 */
 
     &:hover {
         background-color: #2D4F36;
+    }
+`;
+
+export const DeleteButton = styled.button`
+    padding: 10px 20px;
+    background-color: #FF5F5F;
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute; /* 버튼을 고정 */
+    bottom: 2vh; /* 하단에서 20px 띄움 */
+    right: 12.5vh; /* 오른쪽에서 20px 띄움 */
+
+    &:hover {
+        background-color: #E14747;
     }
 `;
 

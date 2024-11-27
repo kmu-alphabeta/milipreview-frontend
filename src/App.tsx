@@ -30,7 +30,7 @@ const App: React.FC = () => {
           <Route path="/community/detail/:id" element={<CommunityDetail />} />
           <Route path="/oauth" element={<KakaoAuth />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/predictionresult" element={<PredictionResultPage />} />
+          <Route path="/predictionresult/:id" element={<PredictionResultPage />} />
         </Routes>
         <GlobalStyle />
       </BrowserRouter>

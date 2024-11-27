@@ -123,7 +123,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
       console.log('전송된 데이터:', formData);
       console.log('성공:', response.data);
 
-      navigate('/predictionresult', { state: { result: response.data } });
+      navigate(`/mypage`);
     } catch (error: any) {
       setError('제출 실패');
       console.error('제출 실패:', error);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate 추가
 import * as p from './style';
 import { getHistory } from '../../apis/history';
 import { useQuery } from 'react-query';
@@ -20,6 +21,7 @@ interface PredictionProps {
 
 const Prediction: React.FC<PredictionProps> = ({ onDataFetched }) => {
   const token = localStorage.getItem('token');
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   const { isLoading, isError, data } = useQuery<HistoryItem[]>({
     queryKey: ['history'],
@@ -66,7 +68,9 @@ const Prediction: React.FC<PredictionProps> = ({ onDataFetched }) => {
               >
                 {item.probability}%
               </p.Probability>
-              <p.ClickButton>
+              <p.ClickButton
+                onClick={() => navigate(`/predictionresult/${item.id}`)} // 클릭 시 해당 ID로 이동
+              >
                 보러
                 <br />
                 가기

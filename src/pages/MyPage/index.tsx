@@ -75,7 +75,7 @@ const MyPage: React.FC = () => {
                     },
                     title: {
                       display: true,
-                      text: '예측 점수 그래프',
+                      text: '예측 타임라인',
                     },
                   },
                   scales: {

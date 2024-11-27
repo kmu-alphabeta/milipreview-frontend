@@ -53,3 +53,4 @@ export const SpecialtyText = styled.div`
   width: 80px; /* 원하는 고정 너비 설정 */
   white-space: normal; /* 너비를 벗어나면 줄바꿈 */
 `;
+

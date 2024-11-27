@@ -1,3 +1,4 @@
+import React from 'react';
 import * as p from './style';
 import { getHistory } from '../../apis/history';
 import { useQuery } from 'react-query';
@@ -13,12 +14,19 @@ interface HistoryItem {
   timestamp: string;
 }
 
-const Prediction: React.FC = () => {
+interface PredictionProps {
+  onDataFetched: (data: HistoryItem[]) => void; // 데이터 전달 핸들러
+}
+
+const Prediction: React.FC<PredictionProps> = ({ onDataFetched }) => {
   const token = localStorage.getItem('token');
-  console.log('토큰:', token);
+
   const { isLoading, isError, data } = useQuery<HistoryItem[]>({
     queryKey: ['history'],
     queryFn: () => getHistory(token as string),
+    onSuccess: (data) => {
+      onDataFetched(data); // 성공적으로 데이터를 불러왔을 때 부모 컴포넌트로 전달
+    },
   });
 
   if (isLoading) {
@@ -35,9 +43,7 @@ const Prediction: React.FC = () => {
           height: '100vh',
         }}
       >
-        정보를 불러오지
-        <br />
-        못했습니다....
+        정보를 불러오지 못했습니다...
       </div>
     );
   }

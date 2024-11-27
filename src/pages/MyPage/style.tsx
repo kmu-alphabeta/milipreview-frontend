@@ -32,6 +32,13 @@ export const HistoryContainer = styled.div`
 
 export const Graph = styled.div`
   border: 1px solid #e4e4e4;
+  border-radius: 10px;
   width: 100%;
   height: 450px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+

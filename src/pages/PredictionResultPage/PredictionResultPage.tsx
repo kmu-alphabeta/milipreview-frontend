@@ -150,15 +150,35 @@ const PredictionResultPage: React.FC = () => {
         <div style={{ marginBottom: '10px' }}>
           <ProfileContainer showEmail={true} />
         </div>
-        <h2>예측 결과</h2>
         <m.HistoryContainer>
           <m.PredictionContainer>
-            <h3>카테고리: {latestPrediction.category}</h3>
-            <p>점수: {latestPrediction.score}</p>
-            <p>컷오프 점수: {latestPrediction.predictedCutoff}</p>
-            <p>합격 확률: {latestPrediction.probability}%</p>
-            <p>{latestPrediction.isPassed ? '합격' : '불합격'}</p>
+            <m.PredictionCard>
+              <m.PredictionLabel>카테고리</m.PredictionLabel>
+              <m.PredictionValue>{latestPrediction.category}</m.PredictionValue>
+            </m.PredictionCard>
+            <m.PredictionCard>
+              <m.PredictionLabel>점수</m.PredictionLabel>
+              <m.PredictionValue>{latestPrediction.score}</m.PredictionValue>
+            </m.PredictionCard>
+            <m.PredictionCard>
+              <m.PredictionLabel>컷오프 점수</m.PredictionLabel>
+              <m.PredictionValue>{latestPrediction.predictedCutoff}</m.PredictionValue>
+            </m.PredictionCard>
+            <m.PredictionCard>
+              <m.PredictionLabel>합격 확률</m.PredictionLabel>
+              <m.PredictionValue>{latestPrediction.probability}%</m.PredictionValue>
+            </m.PredictionCard>
+            <m.PredictionCard
+              className="result-card"
+              isPassed={latestPrediction.isPassed}
+            >
+              <m.PredictionLabel>결과</m.PredictionLabel>
+              <m.PredictionValue>
+                {latestPrediction.isPassed ? '합격' : '불합격'}
+              </m.PredictionValue>
+            </m.PredictionCard>
           </m.PredictionContainer>
+
           <m.Graph>
             <Line data={graphData} options={graphOptions} />
           </m.Graph>

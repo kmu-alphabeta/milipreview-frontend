@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import * as m from './style';
 
@@ -6,7 +7,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
 interface PredictionFormProps {
   category: string | null;
-  baseCategory: string | null; // 동적으로 전달받을 상위 카테고리 (영어)
+  baseCategory: string | null;
 }
 
 const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory }) => {
@@ -16,6 +17,8 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionResult, setSubmissionResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate(); // useNavigate 추가
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,24 +79,19 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
 
   const prepareFormData = (apiData: any, selectedOptions: { [key: string]: string }) => {
     return {
-      militaryType: apiData.militaryType || 'UNKNOWN', // militaryType 포함
       form: apiData.form.map((item: any) => {
-        const selectedOption = selectedOptions[item.name]; // 사용자가 선택한 옵션
-        const score = selectedOption ? item.score[selectedOption] : null; // 선택된 점수
+        const selectedOption = selectedOptions[item.name];
+        const score = selectedOption ? item.score[selectedOption] : 0; // 선택된 점수, 없으면 0
 
-        // group 데이터를 변환
         const group = (item.group || []).map((groupItem: any) => ({
           name: groupItem.name,
           priority: groupItem.priority,
           limit: groupItem.limit,
         }));
 
-        // POST 데이터 구조에 맞게 변환
         return {
-          name: item.name,
-          type: item.type,
-          group: group.length > 0 ? group : undefined, // group이 없으면 undefined
-          score: score !== null ? { [selectedOption]: score } : undefined, // score가 있으면 key-value 형태로 전달
+          group: group.length > 0 ? group : [], // group이 없는 경우 빈 배열로 설정
+          score: score, // score 값 설정
         };
       }),
     };
@@ -102,14 +100,14 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    // prepareFormData 호출
-    const formData = prepareFormData(apiData, selectedOptions);
+    const formData = prepareFormData(apiData, selectedOptions); // 양식 변환
 
     try {
       const token = localStorage.getItem('token'); // 로컬스토리지에서 토큰 가져오기
       if (!token) {
         throw new Error('토큰이 없습니다. 로그인하세요.');
       }
+
       const response = await axios.post(
         `${API_BASE_URL}/form/calculate/${baseCategory}/${category}`,
         formData,
@@ -120,9 +118,12 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ category, baseCategory 
           },
         }
       );
+
       setSubmissionResult(response.data);
       console.log('전송된 데이터:', formData);
-      console.log('성공');
+      console.log('성공:', response.data);
+
+      navigate('/predictionresult', { state: { result: response.data } });
     } catch (error: any) {
       setError('제출 실패');
       console.error('제출 실패:', error);

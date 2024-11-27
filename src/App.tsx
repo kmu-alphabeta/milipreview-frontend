@@ -9,6 +9,7 @@ import CommunityDetail from './components/Community/CommunityDetail';
 import GlobalStyle from './styles/GlobalStyles';
 import KakaoAuth from './components/KakaoAuth';
 import SearchPage from './pages/SearchPage';
+import PredictionResultPage from './pages/PredictionResultPage/PredictionResultPage';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 import MyPage from './pages/MyPage';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Route path="/community/detail/:id" element={<CommunityDetail />} />
           <Route path="/oauth" element={<KakaoAuth />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/predictionresult" element={<PredictionResultPage />} />
         </Routes>
         <GlobalStyle />
       </BrowserRouter>

@@ -4,10 +4,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  margin: 0 10%;
-  gap: 16px;
-  border-radius: 10px;
+  margin: 0% 16%;
+  margin-bottom: 20px;
+  gap: 15px;
 `;
 
 export const Title = styled.h1`

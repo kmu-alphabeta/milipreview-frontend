@@ -128,7 +128,8 @@ const MainPage: React.FC = () => {
               <span style={{ color: 'red' }}>
                 '{topTwoRecords.length > 0 ? topTwoRecords[0].category : 'N/A'}'
               </span>
-              가 합격될 가능성이 가장 높아요 !
+              가 합격될 <br />
+              가능성이 가장 높아요 !
             </m.Text>
             <m.smText>
               ❗지원자님의 지원 경향과 합격률을 계산했을 때 {army}이 가장

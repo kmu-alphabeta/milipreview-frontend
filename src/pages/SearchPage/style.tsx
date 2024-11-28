@@ -104,6 +104,7 @@ export const Placeholder = styled.div`
   font-size: 1.1rem;
   color: #bbb;
   text-align: center;
+  margin-bottom: 10px;
 `;
 
 export const Footer = styled.div`

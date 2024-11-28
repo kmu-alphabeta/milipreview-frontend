@@ -62,7 +62,19 @@ const SearchPage: React.FC = () => {
           {answer ? (
             <e.Answer>{answer}</e.Answer>
           ) : (
-            <e.Placeholder>답변이 이곳에 표시됩니다.</e.Placeholder>
+            <>
+              <e.Placeholder>
+                아직 자신에게 맞는 군종을 정하지 못했다면?
+              </e.Placeholder>
+              <e.Placeholder>
+                ex: "군대를 가고 싶은데 추천해줘. 나는 어릴때부터 바다를
+                좋아했고 운전하는것을 좋아해."
+              </e.Placeholder>
+              <e.Placeholder>훈련소에 대해 궁금한 점이 있다면?</e.Placeholder>
+              <e.Placeholder>
+                ex: "해군의 수송이나 기관 모집안내를 볼 수 있을까?"
+              </e.Placeholder>
+            </>
           )}
         </e.AnswerBox>
       </e.InnerContainer>

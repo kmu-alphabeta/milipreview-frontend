@@ -85,12 +85,12 @@ const RecommendGraph: React.FC = () => {
     );
   }
   return (
-    <div className="piechart" style={{ width: '100%', height: '250px' }}>
+    <div className="piechart" style={{ width: '100%', height: '200px' }}>
       <ResponsivePie
         // chart에 사용될 데이터
         data={chartData}
         // chart margin
-        margin={{ top: 30, right: 80, bottom: 40, left: 80 }}
+        margin={{ right: 80, left: 80 }}
         // chart 중간 빈공간 반지름
         innerRadius={0.5}
         // pad 간격

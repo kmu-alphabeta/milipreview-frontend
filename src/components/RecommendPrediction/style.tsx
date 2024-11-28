@@ -16,7 +16,6 @@ export const InnerContainer = styled.div`
   width: 100%;
   height: 50px;
   padding: 10px 13px;
-  cursor: pointer;
 `;
 
 export const LeftBox = styled.div`

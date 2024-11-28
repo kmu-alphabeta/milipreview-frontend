@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import * as m from './style';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Comments from '../Comments/Comments';
-import Header from '../Header';
+import Comments from '../../components/Comments/Comments';
+import Header from '../../components/Header';
+import Spinner from '../../components/Spinner';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -76,11 +77,7 @@ const CommunityDetail: React.FC = () => {
   }
 
   if (!post) {
-    return (
-      <m.Container>
-        <m.Header>로딩 중...</m.Header>
-      </m.Container>
-    );
+    return <Spinner />;
   }
 
   return (

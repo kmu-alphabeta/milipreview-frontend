@@ -8,7 +8,6 @@ import { getHistory } from '../../apis/history';
 import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import RecommendPrediction from '../../components/RecommendPrediction';
-import Group from '../../assets/Graph.svg';
 import RecommendGraph from '../../components/RecommendGraph';
 
 interface HistoryItem {
@@ -123,7 +122,6 @@ const MainPage: React.FC = () => {
               <br /> 맞춤 직종이에요!
             </m.Text>
             <m.Text style={{ color: 'red' }}>추천하는 군종 : {army}</m.Text>
-            {/* <img src={Group} alt="Group" /> */}
             <RecommendGraph />
             <m.Text>
               그중에서도 <br />

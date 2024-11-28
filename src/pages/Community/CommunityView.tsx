@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as m from './style';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
-
+import Spinner from '../../components/Spinner';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
@@ -49,7 +49,7 @@ const CommunityView: React.FC = () => {
         </Link>
       </m.ButtonContainer>
       {loading ? (
-        <m.ListTitle>로딩 중...</m.ListTitle> // 로딩 중일 때 표시
+        <Spinner /> // 로딩 중일 때 표시
       ) : error ? (
         <m.ListTitle>{error}</m.ListTitle> // 에러 발생 시 표시
       ) : (

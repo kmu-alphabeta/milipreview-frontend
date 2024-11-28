@@ -28,7 +28,7 @@ const CommunityWrite: React.FC = () => {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
-        }
+        },
       );
 
       console.log('작성 성공:', response.data); // 생성된 게시글 ID 확인

@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../../components/Spinner';
 import RecommendPrediction from '../../components/RecommendPrediction';
 import RecommendGraph from '../../components/RecommendGraph';
-
+import useAuthStore from '../../stores/authStore';
 interface HistoryItem {
   id: number;
   category: string;
@@ -28,12 +28,13 @@ const MainPage: React.FC = () => {
       state: { category: category.type, specialty: category.specialty },
     });
   };
-
-  const token = localStorage.getItem('token') || '';
-  const { isLoading, isError, data } = useQuery<HistoryItem[]>({
-    queryKey: ['history'],
-    queryFn: () => getHistory(token),
-  });
+  //토큰을 localstorage에서 말고 zustand로 관리하는 것으로 변경
+  const token = useAuthStore((state) => state.accessToken);
+  const { isLoading, isError, data } = useQuery<HistoryItem[]>(
+    ['history'],
+    () => getHistory(token as string),
+    { enabled: !!token },
+  );
 
   if (isLoading) {
     return <Spinner />;

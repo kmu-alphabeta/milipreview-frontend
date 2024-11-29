@@ -60,7 +60,9 @@ const MainPage: React.FC = () => {
 
   const average =
     topTwoRecords.length > 0
-      ? Math.abs(topTwoRecords[0].predictedCutoff - topTwoRecords[0].score)
+      ? Math.floor(
+          Math.abs(topTwoRecords[0].predictedCutoff - topTwoRecords[0].score),
+        )
       : 0;
 
   const [army] =

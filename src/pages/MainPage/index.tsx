@@ -131,7 +131,7 @@ const MainPage: React.FC = () => {
               <span style={{ color: 'red' }}>
                 '{topTwoRecords.length > 0 ? topTwoRecords[0].category : 'N/A'}'
               </span>
-              가 합격될 <br />
+              가(이) 합격될 <br />
               가능성이 가장 높아요 !
             </m.Text>
             <m.smText>

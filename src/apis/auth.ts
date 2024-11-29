@@ -14,7 +14,6 @@ export const fetchKakaoToken = async (code: string): Promise<any> => {
       },
     },
   );
-  console.log('서버 응답 데이터:', res.data);
   return res.data;
 };
 

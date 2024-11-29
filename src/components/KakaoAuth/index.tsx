@@ -17,13 +17,13 @@ const Auth: React.FC = () => {
       console.log('Login Success');
       console.log('onSuccess data:', data);
       if (data.token) {
+        login(data.token); // Zustand에 토큰 저장
         localStorage.setItem('token', data.token);
-        login(data.token);
+        navigate('/'); // 토큰 저장 후 이동
       } else {
         console.error('Token이 없습니다:', data);
       }
     },
-
     onError: (error) => {
       console.error('Failed to get token:', error); // 에러 처리
     },
@@ -33,7 +33,6 @@ const Auth: React.FC = () => {
   React.useEffect(() => {
     if (OAuth) {
       tokenMutation.mutate(OAuth); // React Query 사용
-      navigate('/');
     } else {
       console.error('Authorization code not found');
     }

@@ -16,6 +16,14 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
     } 
+    a {
+      text-decoration: none; /* 밑줄 제거 */
+      color: inherit; /* 텍스트 색상 상속 */
+    }
+
+    a:hover {
+      text-decoration: none; /* hover 상태에서도 밑줄 제거 */
+    }
     //미디어 쿼리
     @media screen and (max-width: 1260px) {
       width: 80%;
@@ -23,12 +31,10 @@ const GlobalStyle = createGlobalStyle`
       margin: 0 auto;
     }
 
-
     :root {
         //colors
         --green: #437550;
-        --gray--0: #D9D9D9;
-        --gray--1: #D9D9D9;
+        --gray: #D9D9D9;
         --red: #C00F0C;
         --white: #FFFFFF;
         --black: #000000;
@@ -40,9 +46,19 @@ const GlobalStyle = createGlobalStyle`
         --bold: 800;
         //font size
         --sm: 15px;
+        --semi-sm: 20px;
         --regular: 25px;
         --large: 30px;
     }
+
+	a {
+		text-decoration: none; /* 밑줄 제거 */
+		color: inherit; /* 텍스트 색상 상속 */
+	}
+
+	a:hover {
+		text-decoration: none; /* hover 상태에서도 밑줄 제거 */
+	}
 `;
 
 export default GlobalStyle;

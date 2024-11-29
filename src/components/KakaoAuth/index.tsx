@@ -19,7 +19,7 @@ const Auth: React.FC = () => {
       if (data.token) {
         login(data.token); // Zustand에 토큰 저장
         localStorage.setItem('token', data.token);
-        navigate('/'); // 토큰 저장 후 이동
+        navigate('/main'); // 토큰 저장 후 이동
       } else {
         console.error('Token이 없습니다:', data);
       }

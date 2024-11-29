@@ -9,14 +9,14 @@ const Header: React.FC = () => {
   const navigate = useLocation();
   const navigateTo = useNavigate();
   console.log(isLoggedIn);
-  const isFirst = navigate.pathname === '/onboarding'; // 첫 방문 여부
+  const isFirst = navigate.pathname === '/'; // 첫 방문 여부
 
   // 로고 클릭 이벤트
   const onClick = () => {
-    if (navigate.pathname === '/') {
+    if (navigate.pathname === '/main') {
       window.location.reload(); // 홈 새로고침
     } else {
-      window.location.href = '/'; // 홈으로 이동
+      window.location.href = '/main'; // 홈으로 이동
     }
   };
 
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
     if (isLoggedIn) {
       logout(); // Zustand에서
       console.log(isLoggedIn);
-      navigateTo('/onboarding'); // 첫 화면으로 이동
+      navigateTo('/'); // 첫 화면으로 이동
     }
   };
 

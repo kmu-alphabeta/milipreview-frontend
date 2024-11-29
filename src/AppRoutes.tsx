@@ -14,8 +14,8 @@ import PredictionResultPage from './pages/PredictionResultPage/PredictionResultP
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/onboarding" element={<OnboardingPage />} />
+      <Route path="/main" element={<MainPage />} />
+      <Route path="/" element={<OnboardingPage />} />
       <Route path="/prediction" element={<PredictionPage />} />
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/community" element={<CommunityView />} />
